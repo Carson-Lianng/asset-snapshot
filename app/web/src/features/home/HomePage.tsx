@@ -202,9 +202,15 @@ export function HomePage({
         />
       </div>
 
-      {/* #1：两块卡等高 —— grid2 默认 align-items:stretch，这里**不能**再写 align-items:start */}
+      {/* #1：两块卡等高 —— grid2 默认 align-items:stretch，这里**不能**再写 align-items:start。
+          2026-10-07 屏幕适配：两卡都改 `.card.eq`（auto 1fr）——
+          · 左卡图表不再写死 height=230，而是 fillHeight 撑满「等高后分到的剩余空间」；
+            窄视口下右卡图例换到饼图下方、把卡撑高时，趋势图跟着变高，卡底不再拖空白。
+            显式 minHeight:220 有双重作用：防压扁 + 把 1fr 的 auto 最小尺寸换成定值
+            （否则视口变宽后行高会被上一次的内容高度顶住，空白收不回来）。
+          · 右卡正文包 `.eq-mid` 垂直居中（与报表页同一套等高语言）。 */}
       <div className="grid2" style={{ gridTemplateColumns: '1.35fr 1fr' }}>
-        <div className="card">
+        <div className="card eq">
           <CardHd
             title="净资产趋势"
             sub={`近 ${trendPoints.length} 期 · 每日取最后一张`}
@@ -214,8 +220,8 @@ export function HomePage({
               </button>
             }
           />
-          <ChartBox className="chartbox" dataChart="home-trend">
-            {w =>
+          <ChartBox className="chartbox" dataChart="home-trend" fillHeight style={{ minHeight: 220 }}>
+            {(w, h) =>
               trendPoints.length >= 1 ? (
                 <LineChart
                   w={w}
@@ -230,24 +236,30 @@ export function HomePage({
                       valueLabels: trendPoints.length <= 2
                     }
                   ]}
-                  height={230}
+                  height={h}
                 />
               ) : null
             }
           </ChartBox>
         </div>
-        <div className="card">
+        <div className="card eq">
           <CardHd title="资产配置" sub={`按分类 · ${last.date} · 悬浮查看币种构成`} />
-          {/* #8 / #11：与报表页共用同一个组件，避免两处各写一遍悬浮明细 */}
-          <CategoryMixPie
-            rows={catRows}
-            mix={catMix}
-            currencyName={curName}
-            side="asset"
-            size={210}
-            chartAttrs={{ 'data-chart': 'home-pie' }}
-            centerText={{ k: '总资产', v: wanText(last.total_assets, 1) + '万' }}
-          />
+          {/* #8 / #11：与报表页共用同一个组件，避免两处各写一遍悬浮明细。
+              `.home-pie`：卡宽不足以「饼图+图例」并排时（图例换到下一行），
+              把孤行上的饼图水平居中，别贴着左边留一整条空白（见 mount.css）。 */}
+          <div className="eq-mid">
+            <div className="home-pie">
+              <CategoryMixPie
+                rows={catRows}
+                mix={catMix}
+                currencyName={curName}
+                side="asset"
+                size={210}
+                chartAttrs={{ 'data-chart': 'home-pie' }}
+                centerText={{ k: '总资产', v: wanText(last.total_assets, 1) + '万' }}
+              />
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" role="img" aria-label="家底快照">
-  <title>家底快照 · 方标</title>
-  <path d="M3 14V3h11" stroke="#0A0A0A" stroke-width="3.2"/>
-  <path d="M34 3h11v11" stroke="#0A0A0A" stroke-width="3.2"/>
-  <path d="M45 34v11H34" stroke="#0A0A0A" stroke-width="3.2"/>
-  <path d="M14 45H3V34" stroke="#0A0A0A" stroke-width="3.2"/>
-  <rect x="9" y="15" width="30" height="18" fill="#FFE500" stroke="#0A0A0A" stroke-width="3"/>
-  <text x="24" y="24" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#0A0A0A">$</text>
-</svg>

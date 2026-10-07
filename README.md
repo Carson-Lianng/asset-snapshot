@@ -8,6 +8,11 @@
 - **一个地址搞定** —— 网页与接口由同一个 Node 进程提供，不需要理解「前端 / 后端」
 - **拷走一个目录就能搬家** —— 全部数据、令牌、备份都在 `./.data/`
 
+> **在线试用（只读演示）** —— <https://carson-lianng.github.io/asset-snapshot-site/try/>
+> 不想先安装？用浏览器打开就能看界面。里面是内置的演示数据（22 个账户、7 期快照），可以随意翻看；
+> 写操作一律不保存（点保存会提示「离线数据源，不可用」）。想记自己的账，按下面的[快速开始](#快速开始)在本机跑一份。
+> 推广页（截图与介绍）：<https://carson-lianng.github.io/asset-snapshot-site/>
+
 <table>
   <tr>
     <td align="center" width="33%"><img src="docs/images/xhs-posters/p1.png" alt="海报 ①：账户散落是常态" width="260"><br><sub><b>①</b> 账户散落是常态 —— 不是你记性差</sub></td>
