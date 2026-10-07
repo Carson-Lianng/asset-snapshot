@@ -9,6 +9,7 @@
 - **拷走一个目录就能搬家** —— 全部数据、令牌、备份都在 `./.data/`
 
 > 产品介绍：<https://carson-lianng.github.io/asset-snapshot-site/>
+>
 > **在线试用（只读演示）** —— <https://carson-lianng.github.io/asset-snapshot-site/try/>
 
 <table>
