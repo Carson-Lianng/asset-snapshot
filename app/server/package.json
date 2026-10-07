@@ -1,0 +1,25 @@
+{
+  "name": "@app/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "本机单端口服务：Hono + Drizzle + better-sqlite3",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "node src/main.ts",
+    "dev": "node --watch src/main.ts"
+  },
+  "dependencies": {
+    "@app/domain": "*",
+    "@app/shared": "*",
+    "@hono/node-server": "^1.13.7",
+    "better-sqlite3": "^11.7.0",
+    "drizzle-orm": "^0.38.3",
+    "hono": "^4.6.14",
+    "pino": "^9.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12"
+  }
+}

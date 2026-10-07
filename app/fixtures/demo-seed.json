@@ -1,0 +1,4668 @@
+{
+  "schema_version": 1,
+  "app_version": "1.0.0",
+  "settings": {
+    "base_currency": "CNY"
+  },
+  "currencies": [
+    {
+      "code": "CNY",
+      "name": "人民币",
+      "symbol": "¥",
+      "sort": 1,
+      "enabled": true
+    },
+    {
+      "code": "USD",
+      "name": "美元",
+      "symbol": "$",
+      "sort": 2,
+      "enabled": true
+    },
+    {
+      "code": "HKD",
+      "name": "港币",
+      "symbol": "HK$",
+      "sort": 3,
+      "enabled": true
+    },
+    {
+      "code": "EUR",
+      "name": "欧元",
+      "symbol": "€",
+      "sort": 4,
+      "enabled": true
+    },
+    {
+      "code": "JPY",
+      "name": "日元",
+      "symbol": "¥",
+      "sort": 5,
+      "enabled": true
+    },
+    {
+      "code": "GBP",
+      "name": "英镑",
+      "symbol": "£",
+      "sort": 6,
+      "enabled": true
+    },
+    {
+      "code": "SGD",
+      "name": "新加坡元",
+      "symbol": "S$",
+      "sort": 7,
+      "enabled": true
+    }
+  ],
+  "rates": {
+    "USD": 7.28,
+    "HKD": 0.93,
+    "EUR": 7.86,
+    "JPY": 0.0486,
+    "GBP": 9.24,
+    "SGD": 5.36,
+    "CNY": 1
+  },
+  "baseHistory": [],
+  "platforms": [
+    {
+      "id": "p-alipay",
+      "name": "支付宝",
+      "type": "payment",
+      "note": "",
+      "sort": 1,
+      "enabled": true
+    },
+    {
+      "id": "p-wechat",
+      "name": "微信",
+      "type": "payment",
+      "note": "",
+      "sort": 2,
+      "enabled": true
+    },
+    {
+      "id": "p-zs",
+      "name": "招行",
+      "type": "bank",
+      "note": "",
+      "sort": 3,
+      "enabled": true
+    },
+    {
+      "id": "p-icbc",
+      "name": "工商银行",
+      "type": "bank",
+      "note": "",
+      "sort": 4,
+      "enabled": true
+    },
+    {
+      "id": "p-boc",
+      "name": "中国银行",
+      "type": "bank",
+      "note": "仅信用卡",
+      "sort": 5,
+      "enabled": true
+    },
+    {
+      "id": "p-oba",
+      "name": "境外银行 A",
+      "type": "bank",
+      "note": "综合账户",
+      "sort": 6,
+      "enabled": true
+    },
+    {
+      "id": "p-usbroker",
+      "name": "美股券商",
+      "type": "broker",
+      "note": "",
+      "sort": 7,
+      "enabled": true
+    },
+    {
+      "id": "p-hkbroker",
+      "name": "港股券商",
+      "type": "broker",
+      "note": "",
+      "sort": 8,
+      "enabled": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "c-cash",
+      "name": "现金",
+      "type": "asset",
+      "sort": 1,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-deposit",
+      "name": "存款",
+      "type": "asset",
+      "sort": 2,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-wealth",
+      "name": "理财",
+      "type": "asset",
+      "sort": 3,
+      "enabled": true,
+      "track_principal": true
+    },
+    {
+      "id": "c-stock",
+      "name": "股票",
+      "type": "asset",
+      "sort": 4,
+      "enabled": true,
+      "track_principal": true
+    },
+    {
+      "id": "c-fund",
+      "name": "基金",
+      "type": "asset",
+      "sort": 5,
+      "enabled": true,
+      "track_principal": true
+    },
+    {
+      "id": "c-mmf",
+      "name": "货币基金",
+      "type": "asset",
+      "sort": 6,
+      "enabled": true,
+      "track_principal": true
+    },
+    {
+      "id": "c-receivable",
+      "name": "应收",
+      "type": "asset",
+      "sort": 7,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-other-asset",
+      "name": "其他",
+      "type": "asset",
+      "sort": 8,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-creditcard",
+      "name": "信用卡",
+      "type": "liability",
+      "sort": 9,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-loan",
+      "name": "贷款",
+      "type": "liability",
+      "sort": 10,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-borrow",
+      "name": "借款",
+      "type": "liability",
+      "sort": 11,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-payable",
+      "name": "应付",
+      "type": "liability",
+      "sort": 12,
+      "enabled": true,
+      "track_principal": false
+    },
+    {
+      "id": "c-other-liab",
+      "name": "其他",
+      "type": "liability",
+      "sort": 13,
+      "enabled": true,
+      "track_principal": false
+    }
+  ],
+  "tags": [
+    {
+      "id": "t-overseas",
+      "name": "境外",
+      "sort": 1,
+      "enabled": true
+    },
+    {
+      "id": "t-long",
+      "name": "长期",
+      "sort": 2,
+      "enabled": true
+    },
+    {
+      "id": "t-liquid",
+      "name": "流动性高",
+      "sort": 3,
+      "enabled": true
+    },
+    {
+      "id": "t-family",
+      "name": "家庭共同",
+      "sort": 4,
+      "enabled": true
+    },
+    {
+      "id": "t-retire",
+      "name": "养老",
+      "sort": 5,
+      "enabled": true
+    },
+    {
+      "id": "t-edu",
+      "name": "教育",
+      "sort": 6,
+      "enabled": true
+    },
+    {
+      "id": "t-emergency",
+      "name": "应急",
+      "sort": 7,
+      "enabled": true
+    }
+  ],
+  "accounts": [
+    {
+      "id": "acc-zs-huqi",
+      "name": "活期",
+      "platform_id": "p-zs",
+      "category_id": "c-deposit",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-liquid"
+      ],
+      "note": "工资卡",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 1,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-zs-licai",
+      "name": "理财",
+      "platform_id": "p-zs",
+      "category_id": "c-wealth",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-long"
+      ],
+      "note": "稳健型 180 天",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 2,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-zs-credit",
+      "name": "招行信用卡",
+      "platform_id": "p-zs",
+      "category_id": "c-creditcard",
+      "type": "liability",
+      "currency": "CNY",
+      "tags": [],
+      "note": "当前应还",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 3,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-icbc-huqi",
+      "name": "活期",
+      "platform_id": "p-icbc",
+      "category_id": "c-deposit",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 4,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-icbc-dingqi",
+      "name": "定期",
+      "platform_id": "p-icbc",
+      "category_id": "c-deposit",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-long"
+      ],
+      "note": "三年期，金额不动",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 5,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-icbc-loan",
+      "name": "信用贷",
+      "platform_id": "p-icbc",
+      "category_id": "c-loan",
+      "type": "liability",
+      "currency": "CNY",
+      "tags": [],
+      "note": "每月还本",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 6,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-alipay-yue",
+      "name": "余额",
+      "platform_id": "p-alipay",
+      "category_id": "c-cash",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-liquid"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 7,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-alipay-yuebao",
+      "name": "余额宝",
+      "platform_id": "p-alipay",
+      "category_id": "c-mmf",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-liquid"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 8,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-alipay-fund",
+      "name": "基金",
+      "platform_id": "p-alipay",
+      "category_id": "c-fund",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-long"
+      ],
+      "note": "偏股混合，分批建仓",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 9,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-alipay-huabei",
+      "name": "花呗",
+      "platform_id": "p-alipay",
+      "category_id": "c-creditcard",
+      "type": "liability",
+      "currency": "CNY",
+      "tags": [],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 10,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-wechat-lingqian",
+      "name": "零钱",
+      "platform_id": "p-wechat",
+      "category_id": "c-cash",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-liquid"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 11,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-wechat-lqt",
+      "name": "零钱通",
+      "platform_id": "p-wechat",
+      "category_id": "c-mmf",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-liquid"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 12,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-boc-credit",
+      "name": "中行信用卡",
+      "platform_id": "p-boc",
+      "category_id": "c-creditcard",
+      "type": "liability",
+      "currency": "CNY",
+      "tags": [],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 13,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-oba-usd",
+      "name": "美元储蓄",
+      "platform_id": "p-oba",
+      "category_id": "c-deposit",
+      "type": "asset",
+      "currency": "USD",
+      "tags": [
+        "t-overseas",
+        "t-liquid"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 14,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-oba-hkd",
+      "name": "港元储蓄",
+      "platform_id": "p-oba",
+      "category_id": "c-deposit",
+      "type": "asset",
+      "currency": "HKD",
+      "tags": [
+        "t-overseas",
+        "t-liquid"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 15,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-oba-eur",
+      "name": "欧元储蓄",
+      "platform_id": "p-oba",
+      "category_id": "c-deposit",
+      "type": "asset",
+      "currency": "EUR",
+      "tags": [
+        "t-overseas",
+        "t-liquid"
+      ],
+      "note": "2026-03 开户",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 16,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-oba-invest",
+      "name": "投资账户",
+      "platform_id": "p-oba",
+      "category_id": "c-wealth",
+      "type": "asset",
+      "currency": "USD",
+      "tags": [
+        "t-overseas",
+        "t-long"
+      ],
+      "note": "美元债 + 结构化",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 17,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-oba-credit",
+      "name": "境外信用卡",
+      "platform_id": "p-oba",
+      "category_id": "c-creditcard",
+      "type": "liability",
+      "currency": "USD",
+      "tags": [
+        "t-overseas"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 18,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-us-broker",
+      "name": "美股账户",
+      "platform_id": "p-usbroker",
+      "category_id": "c-stock",
+      "type": "asset",
+      "currency": "USD",
+      "tags": [
+        "t-overseas",
+        "t-long"
+      ],
+      "note": "长持科技股",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 19,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-hk-broker",
+      "name": "港股账户",
+      "platform_id": "p-hkbroker",
+      "category_id": "c-stock",
+      "type": "asset",
+      "currency": "HKD",
+      "tags": [
+        "t-overseas",
+        "t-long"
+      ],
+      "note": "",
+      "include_in_net_worth": true,
+      "track_principal": true,
+      "sort": 20,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-recv",
+      "name": "借出款",
+      "platform_id": null,
+      "category_id": "c-receivable",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-family"
+      ],
+      "note": "亲友周转，未约定期限",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 21,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    },
+    {
+      "id": "acc-extra",
+      "name": "备用金",
+      "platform_id": null,
+      "category_id": "c-other-asset",
+      "type": "asset",
+      "currency": "CNY",
+      "tags": [
+        "t-emergency"
+      ],
+      "note": "家里现金，新建后尚未盘点",
+      "include_in_net_worth": true,
+      "track_principal": false,
+      "sort": 22,
+      "archived": false,
+      "created_at": "2025-12-01 09:00"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "snap-1",
+      "date": "2025-12-31",
+      "note": "年末盘点",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.32,
+        "HKD": 0.937,
+        "EUR": 7.65,
+        "JPY": 0.0481,
+        "GBP": 9.31,
+        "SGD": 5.42
+      },
+      "total_assets": 1489067.44,
+      "total_liabilities": 143377.44,
+      "net_worth": 1345690,
+      "created_at": "2026-10-03 10:00",
+      "items": [
+        {
+          "id": "si-2025-12-31-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 67470,
+          "exchange_rate": 1,
+          "amount_in_base": 67470,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 268800,
+          "exchange_rate": 1,
+          "amount_in_base": 268800,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 6820,
+          "exchange_rate": 1,
+          "amount_in_base": 6820,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 28764,
+          "exchange_rate": 1,
+          "amount_in_base": 28764,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200000,
+          "exchange_rate": 1,
+          "amount_in_base": 200000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 120000,
+          "exchange_rate": 1,
+          "amount_in_base": 120000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 5363,
+          "exchange_rate": 1,
+          "amount_in_base": 5363,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 112896,
+          "exchange_rate": 1,
+          "amount_in_base": 112896,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 120000,
+          "principal_in_base": 120000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 87780,
+          "exchange_rate": 1,
+          "amount_in_base": 87780,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 60000,
+          "principal_in_base": 60000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 4396,
+          "exchange_rate": 1,
+          "amount_in_base": 4396,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 1782,
+          "exchange_rate": 1,
+          "amount_in_base": 1782,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 29160,
+          "exchange_rate": 1,
+          "amount_in_base": 29160,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 32900,
+          "principal_in_base": 32900,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 4900,
+          "exchange_rate": 1,
+          "amount_in_base": 4900,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 13888,
+          "exchange_rate": 7.32,
+          "amount_in_base": 101660.16,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 59520,
+          "exchange_rate": 0.937,
+          "amount_in_base": 55770.24,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 50052,
+          "exchange_rate": 7.32,
+          "amount_in_base": 366380.64,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 366000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 992,
+          "exchange_rate": 7.32,
+          "amount_in_base": 7261.44,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 142200,
+          "exchange_rate": 0.937,
+          "amount_in_base": 133241.4,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 140550,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-1"
+        },
+        {
+          "id": "si-2025-12-31-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30000,
+          "exchange_rate": 1,
+          "amount_in_base": 30000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-1"
+        }
+      ]
+    },
+    {
+      "id": "snap-2",
+      "date": "2026-03-31",
+      "note": "一季度末盘点",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.25,
+        "HKD": 0.928,
+        "EUR": 7.78,
+        "JPY": 0.0478,
+        "GBP": 9.2,
+        "SGD": 5.38
+      },
+      "total_assets": 1630997.14,
+      "total_liabilities": 149513,
+      "net_worth": 1481484.14,
+      "created_at": "2026-10-03 10:01",
+      "items": [
+        {
+          "id": "si-2026-03-31-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 76120,
+          "exchange_rate": 1,
+          "amount_in_base": 76120,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 284800,
+          "exchange_rate": 1,
+          "amount_in_base": 284800,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 16740,
+          "exchange_rate": 1,
+          "amount_in_base": 16740,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 34686,
+          "exchange_rate": 1,
+          "amount_in_base": 34686,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200000,
+          "exchange_rate": 1,
+          "amount_in_base": 200000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 110400,
+          "exchange_rate": 1,
+          "amount_in_base": 110400,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 7352.5,
+          "exchange_rate": 1,
+          "amount_in_base": 7352.5,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 127008,
+          "exchange_rate": 1,
+          "amount_in_base": 127008,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 130050,
+          "principal_in_base": 130050,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 81312,
+          "exchange_rate": 1,
+          "amount_in_base": 81312,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 80000,
+          "principal_in_base": 80000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 7536,
+          "exchange_rate": 1,
+          "amount_in_base": 7536,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 2592,
+          "exchange_rate": 1,
+          "amount_in_base": 2592,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 34992,
+          "exchange_rate": 1,
+          "amount_in_base": 34992,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 39010,
+          "principal_in_base": 39010,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 3150,
+          "exchange_rate": 1,
+          "amount_in_base": 3150,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 17360,
+          "exchange_rate": 7.25,
+          "amount_in_base": 125860,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 71040,
+          "exchange_rate": 0.928,
+          "amount_in_base": 65925.12,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-oba-eur",
+          "account_id": "acc-oba-eur",
+          "account_name_snapshot": "欧元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "EUR",
+          "original_amount": 4224,
+          "exchange_rate": 7.78,
+          "amount_in_base": 32862.72,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 16,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 53544,
+          "exchange_rate": 7.25,
+          "amount_in_base": 388194,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 362500,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 1612,
+          "exchange_rate": 7.25,
+          "amount_in_base": 11687,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 150100,
+          "exchange_rate": 0.928,
+          "amount_in_base": 139292.8,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 139200,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-2"
+        },
+        {
+          "id": "si-2026-03-31-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30000,
+          "exchange_rate": 1,
+          "amount_in_base": 30000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-2"
+        }
+      ]
+    },
+    {
+      "id": "snap-3",
+      "date": "2026-05-31",
+      "note": "补录 · 5 月末",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.19,
+        "HKD": 0.921,
+        "EUR": 7.92,
+        "JPY": 0.0472,
+        "GBP": 9.14,
+        "SGD": 5.31
+      },
+      "total_assets": 1949477.68,
+      "total_liabilities": 123465.36,
+      "net_worth": 1826012.32,
+      "created_at": "2026-10-03 10:02",
+      "items": [
+        {
+          "id": "si-2026-05-31-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 82175,
+          "exchange_rate": 1,
+          "amount_in_base": 82175,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 300800,
+          "exchange_rate": 1,
+          "amount_in_base": 300800,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 8928,
+          "exchange_rate": 1,
+          "amount_in_base": 8928,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 38070,
+          "exchange_rate": 1,
+          "amount_in_base": 38070,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200000,
+          "exchange_rate": 1,
+          "amount_in_base": 200000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 100000,
+          "exchange_rate": 1,
+          "amount_in_base": 100000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 9688,
+          "exchange_rate": 1,
+          "amount_in_base": 9688,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 137984,
+          "exchange_rate": 1,
+          "amount_in_base": 137984,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 139950,
+          "principal_in_base": 139950,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 75768,
+          "exchange_rate": 1,
+          "amount_in_base": 75768,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 100000,
+          "principal_in_base": 100000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 5338,
+          "exchange_rate": 1,
+          "amount_in_base": 5338,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 4050,
+          "exchange_rate": 1,
+          "amount_in_base": 4050,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 40338,
+          "exchange_rate": 1,
+          "amount_in_base": 40338,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 42300,
+          "principal_in_base": 42300,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 3850,
+          "exchange_rate": 1,
+          "amount_in_base": 3850,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 20336,
+          "exchange_rate": 7.19,
+          "amount_in_base": 146215.84,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 81600,
+          "exchange_rate": 0.921,
+          "amount_in_base": 75153.6,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-oba-eur",
+          "account_id": "acc-oba-eur",
+          "account_name_snapshot": "欧元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "EUR",
+          "original_amount": 5120,
+          "exchange_rate": 7.92,
+          "amount_in_base": 40550.4,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 16,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 55872,
+          "exchange_rate": 7.19,
+          "amount_in_base": 401719.68,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 359500,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 744,
+          "exchange_rate": 7.19,
+          "amount_in_base": 5349.36,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-us-broker",
+          "account_id": "acc-us-broker",
+          "account_name_snapshot": "美股账户",
+          "platform_id_snapshot": "p-usbroker",
+          "platform_name_snapshot": "美股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 33228,
+          "exchange_rate": 7.19,
+          "amount_in_base": 238909.32,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 35000,
+          "principal_in_base": 251650,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 19,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 139040,
+          "exchange_rate": 0.921,
+          "amount_in_base": 128055.84,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 138150,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-3"
+        },
+        {
+          "id": "si-2026-05-31-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30000,
+          "exchange_rate": 1,
+          "amount_in_base": 30000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-3"
+        }
+      ]
+    },
+    {
+      "id": "snap-5b",
+      "date": "2026-05-31",
+      "note": "5 月末修正重录",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.19,
+        "HKD": 0.921,
+        "EUR": 7.92,
+        "JPY": 0.0472,
+        "GBP": 9.14,
+        "SGD": 5.31
+      },
+      "total_assets": 1954156.42,
+      "total_liabilities": 123761.68,
+      "net_worth": 1830394.74,
+      "created_at": "2026-10-03 10:30",
+      "items": [
+        {
+          "id": "si-2026-05-31b-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 82372.22,
+          "exchange_rate": 1,
+          "amount_in_base": 82372.22,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 301521.92,
+          "exchange_rate": 1,
+          "amount_in_base": 301521.92,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 8949.43,
+          "exchange_rate": 1,
+          "amount_in_base": 8949.43,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 38161.37,
+          "exchange_rate": 1,
+          "amount_in_base": 38161.37,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200480,
+          "exchange_rate": 1,
+          "amount_in_base": 200480,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 100240,
+          "exchange_rate": 1,
+          "amount_in_base": 100240,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 9711.25,
+          "exchange_rate": 1,
+          "amount_in_base": 9711.25,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 138315.16,
+          "exchange_rate": 1,
+          "amount_in_base": 138315.16,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 139950,
+          "principal_in_base": 139950,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 75949.84,
+          "exchange_rate": 1,
+          "amount_in_base": 75949.84,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 100000,
+          "principal_in_base": 100000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 5350.81,
+          "exchange_rate": 1,
+          "amount_in_base": 5350.81,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 4059.72,
+          "exchange_rate": 1,
+          "amount_in_base": 4059.72,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 40434.81,
+          "exchange_rate": 1,
+          "amount_in_base": 40434.81,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 42300,
+          "principal_in_base": 42300,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 3859.24,
+          "exchange_rate": 1,
+          "amount_in_base": 3859.24,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 20384.81,
+          "exchange_rate": 7.19,
+          "amount_in_base": 146566.76,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 81795.84,
+          "exchange_rate": 0.921,
+          "amount_in_base": 75333.97,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-oba-eur",
+          "account_id": "acc-oba-eur",
+          "account_name_snapshot": "欧元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "EUR",
+          "original_amount": 5132.29,
+          "exchange_rate": 7.92,
+          "amount_in_base": 40647.72,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 16,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 56006.09,
+          "exchange_rate": 7.19,
+          "amount_in_base": 402683.81,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 359500,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 745.79,
+          "exchange_rate": 7.19,
+          "amount_in_base": 5362.2,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-us-broker",
+          "account_id": "acc-us-broker",
+          "account_name_snapshot": "美股账户",
+          "platform_id_snapshot": "p-usbroker",
+          "platform_name_snapshot": "美股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 33307.75,
+          "exchange_rate": 7.19,
+          "amount_in_base": 239482.7,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 35000,
+          "principal_in_base": 251650,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 19,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 139373.7,
+          "exchange_rate": 0.921,
+          "amount_in_base": 128363.17,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 138150,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-5b"
+        },
+        {
+          "id": "si-2026-05-31b-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30072,
+          "exchange_rate": 1,
+          "amount_in_base": 30072,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-5b"
+        }
+      ]
+    },
+    {
+      "id": "snap-4",
+      "date": "2026-06-30",
+      "note": "半年盘点",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.16,
+        "HKD": 0.918,
+        "EUR": 7.88,
+        "JPY": 0.0469,
+        "GBP": 9.08,
+        "SGD": 5.29
+      },
+      "total_assets": 1981909,
+      "total_liabilities": 137447.6,
+      "net_worth": 1844461.4,
+      "created_at": "2026-10-03 10:03",
+      "items": [
+        {
+          "id": "si-2026-06-30-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 74390,
+          "exchange_rate": 1,
+          "amount_in_base": 74390,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 308800,
+          "exchange_rate": 1,
+          "amount_in_base": 308800,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 20088,
+          "exchange_rate": 1,
+          "amount_in_base": 20088,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 40185,
+          "exchange_rate": 1,
+          "amount_in_base": 40185,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200000,
+          "exchange_rate": 1,
+          "amount_in_base": 200000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 92800,
+          "exchange_rate": 1,
+          "amount_in_base": 92800,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 6401,
+          "exchange_rate": 1,
+          "amount_in_base": 6401,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 145824,
+          "exchange_rate": 1,
+          "amount_in_base": 145824,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 145050,
+          "principal_in_base": 145050,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 79464,
+          "exchange_rate": 1,
+          "amount_in_base": 79464,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 100000,
+          "principal_in_base": 100000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 8792,
+          "exchange_rate": 1,
+          "amount_in_base": 8792,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 2916,
+          "exchange_rate": 1,
+          "amount_in_base": 2916,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 43740,
+          "exchange_rate": 1,
+          "amount_in_base": 43740,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 45120,
+          "principal_in_base": 45120,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 2450,
+          "exchange_rate": 1,
+          "amount_in_base": 2450,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 22320,
+          "exchange_rate": 7.16,
+          "amount_in_base": 159811.2,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 88320,
+          "exchange_rate": 0.918,
+          "amount_in_base": 81077.76,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-oba-eur",
+          "account_id": "acc-oba-eur",
+          "account_name_snapshot": "欧元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "EUR",
+          "original_amount": 5760,
+          "exchange_rate": 7.88,
+          "amount_in_base": 45388.8,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 16,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 51216,
+          "exchange_rate": 7.16,
+          "amount_in_base": 366706.56,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 358000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 1860,
+          "exchange_rate": 7.16,
+          "amount_in_base": 13317.6,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-us-broker",
+          "account_id": "acc-us-broker",
+          "account_name_snapshot": "美股账户",
+          "platform_id_snapshot": "p-usbroker",
+          "platform_name_snapshot": "美股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 36636,
+          "exchange_rate": 7.16,
+          "amount_in_base": 262313.76,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 35000,
+          "principal_in_base": 250600,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 19,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 146940,
+          "exchange_rate": 0.918,
+          "amount_in_base": 134890.92,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 137700,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-4"
+        },
+        {
+          "id": "si-2026-06-30-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30000,
+          "exchange_rate": 1,
+          "amount_in_base": 30000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-4"
+        }
+      ]
+    },
+    {
+      "id": "snap-5",
+      "date": "2026-08-31",
+      "note": "8 月末盘点",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.24,
+        "HKD": 0.925,
+        "EUR": 7.81,
+        "JPY": 0.0475,
+        "GBP": 9.19,
+        "SGD": 5.34
+      },
+      "total_assets": 2094676.98,
+      "total_liabilities": 109034.96,
+      "net_worth": 1985642.02,
+      "created_at": "2026-10-03 10:04",
+      "items": [
+        {
+          "id": "si-2026-08-31-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 80445,
+          "exchange_rate": 1,
+          "amount_in_base": 80445,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 316800,
+          "exchange_rate": 1,
+          "amount_in_base": 316800,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 5952,
+          "exchange_rate": 1,
+          "amount_in_base": 5952,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 37224,
+          "exchange_rate": 1,
+          "amount_in_base": 37224,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200000,
+          "exchange_rate": 1,
+          "amount_in_base": 200000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 85600,
+          "exchange_rate": 1,
+          "amount_in_base": 85600,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 9342,
+          "exchange_rate": 1,
+          "amount_in_base": 9342,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 152096,
+          "exchange_rate": 1,
+          "amount_in_base": 152096,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 147450,
+          "principal_in_base": 147450,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 83160,
+          "exchange_rate": 1,
+          "amount_in_base": 83160,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 100000,
+          "principal_in_base": 100000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 5652,
+          "exchange_rate": 1,
+          "amount_in_base": 5652,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 3564,
+          "exchange_rate": 1,
+          "amount_in_base": 3564,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 46656,
+          "exchange_rate": 1,
+          "amount_in_base": 46656,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 46060,
+          "principal_in_base": 46060,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 4200,
+          "exchange_rate": 1,
+          "amount_in_base": 4200,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 23808,
+          "exchange_rate": 7.24,
+          "amount_in_base": 172369.92,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 93120,
+          "exchange_rate": 0.925,
+          "amount_in_base": 86136,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-oba-eur",
+          "account_id": "acc-oba-eur",
+          "account_name_snapshot": "欧元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "EUR",
+          "original_amount": 6144,
+          "exchange_rate": 7.81,
+          "amount_in_base": 47984.64,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 16,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 55290,
+          "exchange_rate": 7.24,
+          "amount_in_base": 400299.6,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 362000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 1054,
+          "exchange_rate": 7.24,
+          "amount_in_base": 7630.96,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-us-broker",
+          "account_id": "acc-us-broker",
+          "account_name_snapshot": "美股账户",
+          "platform_id_snapshot": "p-usbroker",
+          "platform_name_snapshot": "美股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 39618,
+          "exchange_rate": 7.24,
+          "amount_in_base": 286834.32,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 35000,
+          "principal_in_base": 253400,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 19,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 153260,
+          "exchange_rate": 0.925,
+          "amount_in_base": 141765.5,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 138750,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-5"
+        },
+        {
+          "id": "si-2026-08-31-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30000,
+          "exchange_rate": 1,
+          "amount_in_base": 30000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-5"
+        }
+      ]
+    },
+    {
+      "id": "snap-6",
+      "date": "2026-09-30",
+      "note": "9 月末盘点",
+      "base_currency": "CNY",
+      "rates": {
+        "USD": 7.28,
+        "HKD": 0.93,
+        "EUR": 7.86,
+        "JPY": 0.0486,
+        "GBP": 9.24,
+        "SGD": 5.36
+      },
+      "total_assets": 2189382,
+      "total_liabilities": 111207.2,
+      "net_worth": 2078174.8,
+      "created_at": "2026-10-03 10:05",
+      "items": [
+        {
+          "id": "si-2026-09-30-acc-zs-huqi",
+          "account_id": "acc-zs-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 86500,
+          "exchange_rate": 1,
+          "amount_in_base": 86500,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 1,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-zs-licai",
+          "account_id": "acc-zs-licai",
+          "account_name_snapshot": "理财",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 320000,
+          "exchange_rate": 1,
+          "amount_in_base": 320000,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 300000,
+          "principal_in_base": 300000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 2,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-zs-credit",
+          "account_id": "acc-zs-credit",
+          "account_name_snapshot": "招行信用卡",
+          "platform_id_snapshot": "p-zs",
+          "platform_name_snapshot": "招行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 12400,
+          "exchange_rate": 1,
+          "amount_in_base": 12400,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 3,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-icbc-huqi",
+          "account_id": "acc-icbc-huqi",
+          "account_name_snapshot": "活期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 42300,
+          "exchange_rate": 1,
+          "amount_in_base": 42300,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 4,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-icbc-dingqi",
+          "account_id": "acc-icbc-dingqi",
+          "account_name_snapshot": "定期",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 200000,
+          "exchange_rate": 1,
+          "amount_in_base": 200000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 5,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-icbc-loan",
+          "account_id": "acc-icbc-loan",
+          "account_name_snapshot": "信用贷",
+          "platform_id_snapshot": "p-icbc",
+          "platform_name_snapshot": "工商银行",
+          "category_id_snapshot": "c-loan",
+          "category_name_snapshot": "贷款",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 80000,
+          "exchange_rate": 1,
+          "amount_in_base": 80000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 6,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-alipay-yue",
+          "account_id": "acc-alipay-yue",
+          "account_name_snapshot": "余额",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 8650,
+          "exchange_rate": 1,
+          "amount_in_base": 8650,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 7,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-alipay-yuebao",
+          "account_id": "acc-alipay-yuebao",
+          "account_name_snapshot": "余额宝",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 156800,
+          "exchange_rate": 1,
+          "amount_in_base": 156800,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 150000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 8,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-alipay-fund",
+          "account_id": "acc-alipay-fund",
+          "account_name_snapshot": "基金",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-fund",
+          "category_name_snapshot": "基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 92400,
+          "exchange_rate": 1,
+          "amount_in_base": 92400,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 100000,
+          "principal_in_base": 100000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 9,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-alipay-huabei",
+          "account_id": "acc-alipay-huabei",
+          "account_name_snapshot": "花呗",
+          "platform_id_snapshot": "p-alipay",
+          "platform_name_snapshot": "支付宝",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 6280,
+          "exchange_rate": 1,
+          "amount_in_base": 6280,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 10,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-wechat-lingqian",
+          "account_id": "acc-wechat-lingqian",
+          "account_name_snapshot": "零钱",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-cash",
+          "category_name_snapshot": "现金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 3240,
+          "exchange_rate": 1,
+          "amount_in_base": 3240,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 11,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-wechat-lqt",
+          "account_id": "acc-wechat-lqt",
+          "account_name_snapshot": "零钱通",
+          "platform_id_snapshot": "p-wechat",
+          "platform_name_snapshot": "微信",
+          "category_id_snapshot": "c-mmf",
+          "category_name_snapshot": "货币基金",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 48600,
+          "exchange_rate": 1,
+          "amount_in_base": 48600,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 47000,
+          "principal_in_base": 47000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 12,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-boc-credit",
+          "account_id": "acc-boc-credit",
+          "account_name_snapshot": "中行信用卡",
+          "platform_id_snapshot": "p-boc",
+          "platform_name_snapshot": "中国银行",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "CNY",
+          "original_amount": 3500,
+          "exchange_rate": 1,
+          "amount_in_base": 3500,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [],
+          "sort": 13,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-oba-usd",
+          "account_id": "acc-oba-usd",
+          "account_name_snapshot": "美元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 24800,
+          "exchange_rate": 7.28,
+          "amount_in_base": 180544,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 14,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-oba-hkd",
+          "account_id": "acc-oba-hkd",
+          "account_name_snapshot": "港元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 96000,
+          "exchange_rate": 0.93,
+          "amount_in_base": 89280,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 15,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-oba-eur",
+          "account_id": "acc-oba-eur",
+          "account_name_snapshot": "欧元储蓄",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-deposit",
+          "category_name_snapshot": "存款",
+          "type": "asset",
+          "currency": "EUR",
+          "original_amount": 6400,
+          "exchange_rate": 7.86,
+          "amount_in_base": 50304,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-liquid",
+              "name": "流动性高"
+            }
+          ],
+          "sort": 16,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-oba-invest",
+          "account_id": "acc-oba-invest",
+          "account_name_snapshot": "投资账户",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-wealth",
+          "category_name_snapshot": "理财",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 58200,
+          "exchange_rate": 7.28,
+          "amount_in_base": 423696,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 50000,
+          "principal_in_base": 364000,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 17,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-oba-credit",
+          "account_id": "acc-oba-credit",
+          "account_name_snapshot": "境外信用卡",
+          "platform_id_snapshot": "p-oba",
+          "platform_name_snapshot": "境外银行 A",
+          "category_id_snapshot": "c-creditcard",
+          "category_name_snapshot": "信用卡",
+          "type": "liability",
+          "currency": "USD",
+          "original_amount": 1240,
+          "exchange_rate": 7.28,
+          "amount_in_base": 9027.2,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            }
+          ],
+          "sort": 18,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-us-broker",
+          "account_id": "acc-us-broker",
+          "account_name_snapshot": "美股账户",
+          "platform_id_snapshot": "p-usbroker",
+          "platform_name_snapshot": "美股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "USD",
+          "original_amount": 42600,
+          "exchange_rate": 7.28,
+          "amount_in_base": 310128,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 35000,
+          "principal_in_base": 254800,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 19,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-hk-broker",
+          "account_id": "acc-hk-broker",
+          "account_name_snapshot": "港股账户",
+          "platform_id_snapshot": "p-hkbroker",
+          "platform_name_snapshot": "港股券商",
+          "category_id_snapshot": "c-stock",
+          "category_name_snapshot": "股票",
+          "type": "asset",
+          "currency": "HKD",
+          "original_amount": 158000,
+          "exchange_rate": 0.93,
+          "amount_in_base": 146940,
+          "include_in_net_worth": true,
+          "tracks_principal": true,
+          "principal": 150000,
+          "principal_in_base": 139500,
+          "is_carried_over": false,
+          "tags_snapshot": [
+            {
+              "id": "t-overseas",
+              "name": "境外"
+            },
+            {
+              "id": "t-long",
+              "name": "长期"
+            }
+          ],
+          "sort": 20,
+          "snapshot_id": "snap-6"
+        },
+        {
+          "id": "si-2026-09-30-acc-recv",
+          "account_id": "acc-recv",
+          "account_name_snapshot": "借出款",
+          "platform_id_snapshot": null,
+          "platform_name_snapshot": "未指定平台",
+          "category_id_snapshot": "c-receivable",
+          "category_name_snapshot": "应收",
+          "type": "asset",
+          "currency": "CNY",
+          "original_amount": 30000,
+          "exchange_rate": 1,
+          "amount_in_base": 30000,
+          "include_in_net_worth": true,
+          "tracks_principal": false,
+          "principal": null,
+          "principal_in_base": null,
+          "is_carried_over": true,
+          "tags_snapshot": [
+            {
+              "id": "t-family",
+              "name": "家庭共同"
+            }
+          ],
+          "sort": 21,
+          "snapshot_id": "snap-6"
+        }
+      ]
+    }
+  ],
+  "draft": null
+}

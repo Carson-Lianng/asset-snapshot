@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@app/domain": ["./app/domain/src/index.ts"],
+      "@app/shared": ["./app/shared/src/index.ts"]
+    }
+  },
+  "include": [
+    "app/domain/src/**/*.ts",
+    "app/domain/test/**/*.ts",
+    "app/shared/src/**/*.ts",
+    "app/server/src/**/*.ts"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@app/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "API 契约：DTO 类型 + zod 边界校验（前后端同源）",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@app/domain": "*",
+    "zod": "^3.23.8"
+  }
+}

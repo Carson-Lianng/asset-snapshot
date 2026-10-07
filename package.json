@@ -1,0 +1,33 @@
+{
+  "name": "asset-snapshot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "家底快照 —— 本机单端口服务，数据不出本机",
+  "license": "MIT",
+  "workspaces": [
+    "app/web",
+    "app/server",
+    "app/domain",
+    "app/shared"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json && tsc -p app/web/tsconfig.json",
+    "typecheck:server": "tsc -p tsconfig.json",
+    "typecheck:web": "tsc -p app/web/tsconfig.json",
+    "db:migrate": "node app/server/src/db/cli-migrate.ts",
+    "db:seed": "node app/server/src/db/cli-seed.ts --yes",
+    "reset": "node app/server/src/db/cli-reset.ts",
+    "dev": "node app/tools/run/dev.mjs",
+    "build": "node app/tools/run/build.mjs",
+    "start": "node app/tools/run/start.mjs"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

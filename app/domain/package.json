@@ -1,0 +1,13 @@
+{
+  "name": "@app/domain",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "计算口径的唯一实现：前后端共享的零依赖纯函数包",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.ts"
+  }
+}

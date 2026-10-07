@@ -1,0 +1,1145 @@
+/**
+ * mount.css —— React 挂载点的布局适配（原型里没有这一层）
+ *
+ * tokens.css 是**逐字节**照抄原型的（这是 Step 3「外观等价」的前提，不要改它）。
+ * 但那份 CSS 里有一条隐含的前提：`.sidebar` 与 `.main` 是 `<body>` 的**直接子元素**。
+ * 布局链正是靠这个成立的：
+ *
+ *     body{display:flex}  →  .sidebar{flex:0 0 248px}  →  .main{flex:1}
+ *
+ * React 需要一个挂载点。如果 `<div id="root">` 是普通块盒，这条链就断了 ——
+ * 两个子元素退化成上下堆叠，主区被顶到首屏之外（y=1340，实测）。
+ *
+ * `display:contents` 让 #root 自己**不生成盒子**，孩子直接参与 <body> 的 flex 布局，
+ * 等价于原型里「直接挂在 body 下」。
+ *
+ * 为什么这不会带来新的不等价：它只改变布局的参与方式，不改变选择器匹配 ——
+ * 而原型 CSS 里并不存在 `body > *` 这类依赖直接父子关系的选择器
+ * （已核对：含 body 的选择器只有 `html,body` 与两处 `body`）。
+ * 将来若有人往 tokens.css 里加 `body > .main` 之类的规则，这里会失效，
+ * 因此这条适配刻意写得显眼。
+ */
+#root {
+  display: contents;
+}
+
+/**
+ * 演示数据提示条（Step 5 新增，原型里没有这一层）
+ *
+ * 为什么写在这里而不是 tokens.css：那条规则是**逐字节照抄原型**，多一行就破坏了
+ * Step 3「外观等价」的前提（本项目靠「不做改动」拿到等价，不靠比对调）。本文件是
+ * **唯一**允许放本项目自有样式的地方。
+ *
+ * 为什么它不会造成外观漂移：这条提示只在 `writable() && data_mode === 'demo'` 时渲染，
+ * 而 Step 0/3 的基准截图全部走 `?data=fixture`（只读）—— 那时它根本不存在于 DOM 里。
+ *
+ * 用的仍是原型的令牌（`--yellow` / `--bd` / `--ink` 系），视觉语言与其余部分一致。
+ */
+.demo-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--yellow);
+  border-bottom: var(--bd);
+  padding: 10px 22px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.demo-notice-text {
+  flex: 1;
+  min-width: 240px;
+}
+.demo-notice-text b {
+  font-weight: 900;
+}
+
+/* ============================================================
+   以下为「原型退役」后本项目自有的界面调整（2026-10-04 起）
+   ------------------------------------------------------------
+   位置纪律：tokens.css 仍是逐字节照抄原型的（模板与颜色令牌的来源），
+   所有新增/覆盖一律写在本文件里。本文件晚于 tokens.css 引入，
+   同等特异度下后者胜出，因此可以精确覆盖个别规则而不动原文件。
+   ============================================================ */
+
+/* ---------- #4 宽屏适配：内容区居中 + 上限 1680px ----------
+   tokens.css 的 `.view` 上限 1400px 且**左对齐**，在 1920+ 的屏幕上右侧会留出
+   大片空白（1500 宽的验收视口恰好低于该上限，所以 Step 3 的基准图看不出来）。
+   这里改成居中并把上限提到 1680px：
+     · 视口 ≤ 1728 时可用宽度本就小于 1680，`margin:0 auto` 不产生位移 ⇒ 基准图不变；
+     · 更宽的屏幕上内容不再贴左，也不会被拉得过长（图表可读性优先）。 */
+.view {
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+/* ---------- 饼图悬浮明细（#8 / #11） ----------
+   提示框跟着光标走，所以由组件用内联样式给 left/top；这里只管外观。
+   `pointer-events:none` 保证提示框自己不会挡住扇区的 mousemove。 */
+.pie-wrap {
+  position: relative;
+  display: inline-block;
+}
+.pie-slice {
+  cursor: pointer;
+}
+.pie-tip {
+  position: absolute;
+  z-index: 80;
+  pointer-events: none;
+  min-width: 176px;
+  max-width: 300px;
+  background: var(--paper-2);
+  border: var(--bd);
+  box-shadow: var(--sh-lg);
+  padding: 9px 11px 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+/* 光标在饼图上半部 → 提示框落到下方；否则落在上方（由组件按光标 y 选类） */
+.pie-tip.above {
+  transform: translate(-50%, -112%);
+}
+.pie-tip.below {
+  transform: translate(-50%, 14%);
+}
+.pie-tip .pt-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 5px;
+  margin-bottom: 6px;
+}
+.pie-tip .pt-hd b {
+  font-size: 12.5px;
+  font-weight: 900;
+}
+.pie-tip .pt-hd span {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.pie-tip .pt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pie-tip .pt-li {
+  display: grid;
+  grid-template-columns: 11px 1fr auto;
+  gap: 1px 7px;
+  align-items: center;
+}
+.pie-tip .pt-sw {
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--ink);
+  grid-row: span 2;
+}
+.pie-tip .pt-nm {
+  font-weight: 700;
+}
+.pie-tip .pt-nm .code {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.pie-tip .pt-amt {
+  font-family: var(--mono);
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.pie-tip .pt-sub {
+  grid-column: 2 / 4;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: right;
+}
+.pie-tip .pt-empty {
+  font-size: 11px;
+  color: var(--muted);
+}
+/* 简单的「标签 — 值」两行（币种明细那种一线一条的形状） */
+.pie-tip .pt-kv {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.pie-tip .pt-kv .k {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.pie-tip .pt-kv .v {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.pie-tip .pt-kv .v small {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.pie-tip .pt-note {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ---------- 列表列头行（#10 账户列表） ----------
+   `.arow` 本身是列表行；`.hd` 变体把它变成列标题行。
+   与盘点页「录入金额」表的表头行同一套视觉。 */
+.arow.hd {
+  background: var(--paper-3);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 7px 12px;
+}
+.arow.hd > div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 列多于一屏时横向滚动（外层容器加这个类） */
+.list-scroll {
+  overflow-x: auto;
+}
+
+/* ---------- 列表列头与内容的对齐（#2 设置页四张表） ----------
+   症状：币种 / 平台 / 分类 / 标签四张表里，「使用中 / 启用 / 默认跟踪本金」这几列的
+   列头是**左对齐**、内容是**居中**，看着就是错位。
+
+   根因是 tokens.css 里那条规则只覆盖了 `td`：
+     table.tbl td.mid{text-align:center}      ← 只有 td
+   而 `th` 的基础规则是 `table.tbl th{text-align:left}`，于是 `th.mid` 一直落在左对齐上。
+   补上同形的 `th.mid` 即可（特异度与那条 td 规则相同、位置更靠后，因此稳定胜出）。
+
+   ⚠ 账户列表（`.arow` 网格）的错位**不是**同一回事，它靠改类名解决不了 ——
+   根因是「每个 `.arow` 都是独立网格 + 末列写了 `auto`」，见 AccountsPage.tsx 的 ACC_TEMPLATE。 */
+table.tbl th.mid {
+  text-align: center;
+}
+
+/* ---------- 等高卡片（#12 / #13） ----------
+   需求：报表「资产配置 / 负债结构」与「平台分布 / 币种分布」各自**等高**。
+
+   等高本身只差一步：`.grid2` 默认就是 `align-items:stretch`，原来被内联的
+   `align-items:'start'` 覆盖掉了 —— 去掉那处内联，两张卡立刻一样高。
+
+   但等高之后，内容少的那张卡（负债结构常常只有两三个分类）会顶在卡口、
+   下方拖一大片空白。所以这里再加一层：卡片改成竖向 flex，正文区
+   `.eq-mid` 吃掉剩余高度并在其中**垂直居中**。
+
+   为什么 `.eq-mid` 用 grid 而不是 flex：正文常常是**多行兄弟**（平台分布是一串
+   `.plrow`、再加一个币种图例），flex 会把它们摊成一行；grid 的 `align-content:center`
+   把这一组行当成整体在垂直方向居中，单个孩子（饼图 + 图例那个 flex 块）也同样适用。
+
+   ⚠ 卡片本身也用 grid（`auto 1fr`）而**不是** flex 列，且正文区**不写** `min-height:0`。
+   `1fr` 等价于 `minmax(auto,1fr)`，其最小值就是内容高度 —— 于是「卡被拉高时正文居中」
+   与「内容比卡高时不被压扁」两条同时成立，不必依赖 flex 的 shrink 行为。
+   （这是选型理由，不是实测结论：flex 列 + `flex-shrink` 在本页四张卡上表现相同，
+   差别只在「有没有留出被压扁的可能」，所以这里选不留的那条。） */
+.card.eq {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.card.eq > .eq-mid {
+  display: grid;
+  align-content: center;
+}
+
+/* ---------- 草稿保存条（#5：设置页元数据改为「点保存才写」） ----------
+   币种 / 平台 / 分类 / 标签四张表的表尾。**有未保存改动时才出现** ——
+   空着的时候一个像素都不占，所以设置页其它分页与基准图不受影响。
+
+   样式沿用本项目的粗边 + 硬阴影语言（--bd / --sh-sm，与 .card 同一套 token），
+   不引入新的颜色或圆角。 */
+.draft-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: var(--paper-3);
+  border: var(--bd);
+  box-shadow: var(--sh-sm);
+}
+/* 待删除的行整行压暗，让「还没生效」一眼可见。
+   用 opacity 而不改写颜色：行里的输入框、徽章、按钮会一起淡下去，
+   不必为一个临时状态再复刻一遍配色。（标记待删除的行**不再渲染输入框**，
+   改成纯文本 —— 它马上要消失了，还留着可编辑的框只会让人以为改得动。） */
+.draft-row-off {
+  opacity: 0.5;
+}
+
+/* 草稿里被改过、但还没保存的字段。
+   不能用 focus 那一档的底色（:focus 是瞬时状态，两者会互相盖住），
+   所以取一个更饱和的浅黄；静态截图里草稿恒为空，这个类不会出现。 */
+.inp.dirty {
+  background: #FFF7C2;
+}
+
+/* ---------- 分类下钻面包屑（#4） ----------
+   「维度分布」标题行右侧的当前下钻范围，旁边跟一个 `.btn.xs.ghost` 的「← 返回整体」。
+
+   只在 `ui.repDrill` 非空时渲染 —— 整体视图下这段 JSX 整个不存在，
+   因此报表页的默认状态（即 Step 3 基准图的 `10-reports`）不受影响。
+
+   不写 box-shadow：它是**状态标签**而不是按钮，与旁边那个可点的 ghost 按钮
+   必须一眼分得开（本项目所有可点的东西都有硬阴影，这里刻意不给）。 */
+.drill-crumb {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  background: var(--paper-3);
+  border: var(--bd);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+/* ---------- 使用手册（#help） ----------
+   原型没有这一页，是 2026-10-05 新加的，所以这里的类名**全部是新的**、
+   不覆盖任何既有选择器 —— `tokens.css` 一字节未动。
+
+   为什么正文排版可以整套自己写：`tokens.css` 只给 `.topbar h1` / `.card-hd h3` /
+   `.modal-hd h3` 这几个**具名上下文**里的标题定了字号，全局的 `h2/h3/h4/p/ul/li`
+   一条都没有。所以 `.help-body` 下的这套排版不会外溢到别的页面。
+
+   版式：左目录 sticky + 右正文。目录的 `top` 是**实测值**，不是拍的 ——
+   顶栏 `.topbar` 高度 = 12(pad) + 30(h1 20px×1.5) + 1(crumb margin) + 16.5(crumb 11px×1.5)
+   + 12(pad) + 3(border) = 74.5px，顶栏自己也是 `sticky top:0`，
+   目录停在 78px 正好落在它下沿，不叠上去。 */
+.help-wrap {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  max-width: 1100px;
+}
+
+/* ---- 目录 ---- */
+.help-toc {
+  position: sticky;
+  top: 78px;
+  background: var(--paper-2);
+  border: var(--bd);
+  box-shadow: var(--sh);
+  padding: 12px;
+}
+.help-toc-hd {
+  font-size: 10px;
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.help-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.help-toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 7px 8px;
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12.5px;
+  transition: all 0.08s;
+}
+.help-toc-item:hover {
+  background: var(--paper-3);
+  border-color: var(--ink);
+}
+.help-toc-item.on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.help-toc-item .no {
+  flex: 0 0 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.6;
+}
+.help-toc-item.on .no {
+  opacity: 1;
+  color: var(--yellow);
+}
+.help-toc-item .tt {
+  flex: 1;
+  min-width: 0;
+}
+.help-toc-ft {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 2px solid var(--ink);
+  font-size: 10.5px;
+  font-family: var(--mono);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---- 正文 ---- */
+.help-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.help-ch {
+  background: var(--paper-2);
+  border: var(--bd);
+  box-shadow: var(--sh);
+  padding: 18px 20px;
+  /* 顶栏是 sticky 且盖在滚动内容之上，而 `scrollIntoView({block:'start'})`
+     只把元素对齐到滚动容器的上沿 —— 不给这 86px，深链跳过去的章节标题会
+     正好被顶栏压住。86 = 顶栏 74.5 + 11.5 的呼吸位。 */
+  scroll-margin-top: 86px;
+}
+.help-ch-hd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 11px;
+  margin-bottom: 13px;
+  border-bottom: 2px solid var(--ink);
+}
+.help-ch-no {
+  display: grid;
+  place-items: center;
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+.help-ch-hd h2 {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+}
+.help-ch-hd .sum {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: right;
+}
+
+.help-body p {
+  font-size: 13px;
+  line-height: 1.78;
+  margin-bottom: 9px;
+}
+.help-body p:last-child {
+  margin-bottom: 0;
+}
+.help-body h4 {
+  font-size: 12.5px;
+  font-weight: 900;
+  margin: 14px 0 7px;
+}
+.help-body ul,
+.help-body ol {
+  margin: 0 0 10px 18px;
+  font-size: 13px;
+  line-height: 1.78;
+}
+.help-body ul:last-child,
+.help-body ol:last-child {
+  margin-bottom: 0;
+}
+.help-body li {
+  margin-bottom: 5px;
+}
+.help-body b {
+  font-weight: 900;
+}
+/* 正文里的等宽片段（`schema_version` 这类）。做成一个小方框而不是纯改字体，
+   与这套粗边的调子一致；`.mono` 在 tokens.css 里只有字族，这里只加外壳。 */
+.help-body .mono {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--paper-3);
+  border: 2px solid var(--ink);
+  padding: 0 4px;
+}
+
+/* 小节标题：与 `.sec-title` 同一套语汇（方块引导符），但那是给整页用的，
+   这里是卡内小节，所以单独一条。 */
+.help-sec {
+  margin-top: 16px;
+}
+.help-sec:first-child {
+  margin-top: 0;
+}
+.help-sec > h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.help-sec > h3::before {
+  content: "";
+  flex: 0 0 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+}
+
+/* 名词对照块。用 dl 而不是 .kv：`.kv` 是「键右对齐值」的数据表，
+   这里是左对齐的词条解释，右对齐会让长句没法读。 */
+.help-kv {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 2px solid var(--ink);
+  background: var(--paper-3);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+.help-kv:last-child {
+  margin-bottom: 0;
+}
+.help-kv dt {
+  font-weight: 800;
+  white-space: nowrap;
+}
+.help-kv dd {
+  min-width: 0;
+}
+
+/* 编号步骤。用 CSS counter 而不是手写序号：正文里插删一步不用回头改号。
+   `::before` 在 grid 里就是一个普通的网格项，所以直接占第 1 列。 */
+.help-steps {
+  counter-reset: hstep;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+.help-steps:last-child {
+  margin-bottom: 0;
+}
+.help-step {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.72;
+}
+.help-step::before {
+  counter-increment: hstep;
+  content: counter(hstep);
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+/* FAQ 折叠项。用原生 <details> 而不是自研折叠：键盘可操作、能被浏览器内查找，
+   样式成本只有下面这几行。 */
+.help-faq {
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+  margin-bottom: 8px;
+}
+.help-faq:last-child {
+  margin-bottom: 0;
+}
+.help-faq summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: var(--paper-3);
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12.5px;
+  list-style: none;
+}
+.help-faq summary::-webkit-details-marker {
+  display: none;
+}
+.help-faq summary::before {
+  content: "＋";
+  font-family: var(--mono);
+  font-weight: 800;
+}
+.help-faq[open] summary::before {
+  content: "－";
+}
+.help-faq .bd {
+  padding: 10px 12px;
+  border-top: 2px solid var(--ink);
+  font-size: 12.5px;
+  line-height: 1.78;
+}
+
+.help-contact {
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* 窄屏：目录改成横向 chips 并取消 sticky。
+   1080px 这个断点与 tokens.css 的网格断点保持一致。 */
+@media (max-width: 1080px) {
+  .help-wrap {
+    grid-template-columns: 1fr;
+  }
+  .help-toc {
+    position: static;
+  }
+  .help-toc-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .help-toc-item {
+    width: auto;
+    border-color: var(--ink);
+  }
+}
+
+/* ---------- 【设置】› 关于页 · 作者品牌区（2026-10-05） ----------
+   原型没有这一段，全部是新增类名，不覆盖任何既有选择器。
+
+   为什么四块内容不排成四个同级小标题：它们的性质本来就不同 ——
+   作者卡是「名片」（谁在说话）、后面两块是「观点」（为什么、主张什么）、
+   联系方式是「出口」。给同一个视觉重量等于把层级抹平，所以分成三种容器。
+
+   左竖线取 8px 而不是随手的 3px：tokens.css 里 `.note` 的签名就是
+   `border:2px solid var(--ink); border-left:8px solid var(--ink)`，
+   8px 左竖线是本项目的「引言/提示」语汇，沿用它可以不引入新的厚度值。
+
+   名片带整圈边框、引言块不带 —— 这是两者唯一的结构差异，用来表达
+   「名片是一个实体物件」而「引言是一段引用」。 */
+/* 正文栏宽度上限。
+   为什么必须有这一条：`.view` 的上限已被本文件提到 1680px（#4 宽屏适配），
+   于是「关于」页的品牌区在宽屏上会把引言摊成**整整一行** —— 实测 1500 视口下
+   81 字挤成 1 行（约 150 字符宽），可读性直接塌掉；名片也被拉成一条横贯全宽的带子。
+   760px 与设计示意图的栏宽一致（12.5px 正文约 60 字/行，落在舒适区）。
+
+   ⚠ 只约束品牌区：上面的应用信息 `.kv` 仍是它原来的 420px（那是数据表，不是正文）；
+   `.hr` 分隔线也**刻意保持满宽** —— 它是「应用信息带」与「品牌区带」之间的分界，
+   跟着内容收窄就失去了分带的意思。 */
+.about-author,
+.about-sec {
+  max-width: 760px;
+}
+
+.about-author {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--paper-3);
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--ink);
+  padding: 14px 16px;
+}
+/* 姓氏方块：黑底黄字，与侧栏 `.brand-mark` 同一套配色（同色号、同字重），
+   只是尺寸从 34 放大到 52 —— 它是这一屏唯一的图形元素，要压得住。 */
+.about-mark {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--yellow);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+}
+.about-author-txt {
+  min-width: 0;
+}
+.about-name {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+.about-role {
+  margin-top: 4px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* 卡内小节标题。与 `.help-sec` 同一套语汇（方块引导符），
+   但那是给整页用的、字号也大一档，这里是卡内小节，故单独一条。
+   ⚠ tokens.css 全局没有 h4 规则（只给 `.topbar h1` / `.card-hd h3` /
+   `.modal-hd h3` 定了字号），所以这条不会外溢到别的页面。 */
+.about-sec {
+  margin-top: 18px;
+}
+.about-sec > h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 900;
+  margin-bottom: 9px;
+}
+.about-sec > h4::before {
+  content: "";
+  flex: 0 0 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+}
+
+/* 引言块：与名片同一套左竖线，但不加整圈边框（见上）。 */
+.about-quote {
+  background: var(--paper-3);
+  border-left: 8px solid var(--ink);
+  padding: 12px 14px;
+  font-size: 12.5px;
+  line-height: 1.85;
+}
+
+/* 产品理念：三条并列主张。
+   方块标记用 `--yellow` 做填充 + 2px 黑边 —— 这是本项目「强调但不用颜色说话之外的东西」的
+   既有做法（`.tab.on` / `.badge` 同源）。刻意用 `align-items:flex-start` + 手写
+   `margin-top` 而不是 `baseline`：`::before` 在 flex 里是**块级**项、没有文字基线，
+   用 baseline 对齐会跟着它的下边缘走，方块的落点就随行高漂。 */
+.about-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.about-list > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+.about-list > li::before {
+  content: "";
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  margin-top: 5px;
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+}
+.about-list b {
+  font-weight: 900;
+}
+.about-list span {
+  color: var(--muted);
+}
+
+/* 联系方式：与 `.kv` 同构的两列网格（同样的 14px 列间距），
+   但值**左对齐** —— `.kv .vv` 是右对齐等宽的数据表，这里是一列链接，
+   右对齐会让长短不一的 URL 无法顺序阅读。 */
+.about-contact {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 6px 14px;
+  font-size: 12.5px;
+}
+.about-contact .k {
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.about-contact a {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+.about-contact a:hover {
+  background: var(--yellow);
+}
+/* 尚未提供的入口。刻意仍然渲染而不是整行删掉：以后补上真值时版面不跳。 */
+.about-none {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-weight: 600;
+}
+
+/* ============================================================
+   资产卡包 · 快照卡包（2026-10-05 视觉迭代）
+   ============================================================
+   两个列表页由「表格 / 列式行」改成「卡片包」：
+     · 账户页：头部 = 账户总览，下面 = 按平台/币种/分类分组的账户卡
+     · 快照页：头部 = 时间筛选，下面 = 按年月分组的快照卡
+   共同点：**卡片整张可点**，行内不再有任何操作按钮（编辑 / 归档 / 删除
+   全部下沉到下一层详情页）—— 这是本次需求的「操作放到下一层」。
+
+   为什么不改 tokens.css：那份文件逐字节照抄原型 `<style>`，由
+   `npm run check:tokens` 守着（`app/tools/verify/check-tokens.mjs`）。所有新类都写在
+   这里，命名带 `acc-` / `snap-` 前缀，不与 tokens.css 的既有选择器重叠。
+
+   为什么卡片用 <button> 而不是 <div>：整张卡是一个动作，用 button 才有
+   键盘可达与语义；因此这里必须把 UA 给 button 的默认样式重置掉
+   （background / border / padding / font / text-align）。
+
+   硬阴影用 --sh-sm（3px）而不是 .card 的 --sh（5px）：卡片是成片出现的，
+   5px 的投影在网格里会糊成一片；3px 与 .btn.sm / .draft-bar 同一档。 */
+
+/* ---------- 卡片网格（两页共用） ---------- */
+.acc-grid,
+.snap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+/* 卡片本体：左侧色带 + 右侧内容。
+   `position: relative` 保留着（卡内以后要放绝对定位的东西时不必再补），
+   但**当前的 `›` 不靠它** —— 见下面 `.acc-card-go` 的注释。 */
+.acc-card,
+.snap-card {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  padding: 0;
+  background: var(--paper-2);
+  border: var(--bd);
+  box-shadow: var(--sh-sm);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+/* 键盘焦点要看得见 —— 全站的可点元素都有硬阴影，这里补一圈黄底 */
+.acc-card:focus-visible,
+.snap-card:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 1px;
+}
+/* 悬停底色沿用全站列表行的 `#FFFCE8`（tokens.css 的 tr:hover / .arow:hover 同色）
+   —— 卡片是「表格行的替代品」，悬停语言必须一致，否则像两种控件。 */
+.acc-card:hover,
+.snap-card:hover {
+  background: #fffce8;
+}
+.acc-card-band,
+.snap-card-band {
+  width: 8px;
+  flex: 0 0 8px;
+  border-right: 2px solid var(--ink);
+}
+/* 快照卡用**黑色**带：与账户卡的彩色币种带同一套语言，但一眼分得清是两类对象 */
+.snap-card-band {
+  background: var(--ink);
+}
+.acc-card-body,
+.snap-card-body {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px 11px 12px;
+  display: flex;
+  flex-direction: column;
+}
+/* 「点得进去」的可见凭据 —— 放在卡**顶行的最右**，而不是绝对定位于右下角：
+   右下角是最后一行文字（金额的折本位币 / 累计收益）的天下，实测两者只差 8px，
+   读起来像「…（+3.53%）›」。进顶行后它永远落在空白处，且不占额外高度。 */
+.acc-card-go,
+.snap-card-go {
+  font-family: var(--mono);
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--muted);
+  opacity: 0.65;
+}
+/* 快照卡顶行：日期 + 同日多张徽章 + 右侧的 `›` */
+.snap-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- 账户卡内部 ---------- */
+/* 卡顶一行：币种方块 + 分类徽章 + 右侧状态徽章。
+   `.acc-card-body` 是纵向 flex，所以这里必须自己再起一行 flex。 */
+.acc-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+/* 币种方块：与侧栏 `.brand-mark` 同一套语言（粗边 + 实底），底色由
+   `currencyColorOf()` 按币种代码哈希给出，集合与顺序变化都不会改色 */
+.acc-ccy {
+  display: inline-block;
+  align-self: flex-start;
+  min-width: 40px;
+  height: 24px;
+  padding: 0 5px;
+  border: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+.acc-nm {
+  margin-top: 7px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.acc-sub {
+  margin-top: 1px;
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 金额是卡上的主角（原币大字），折本位币退成一行小字 —— 
+   这是相对旧表格最大的一处变化：不再有「原币 / 折本位币」两列并排 */
+.acc-amt,
+.snap-amt {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.acc-foot,
+.snap-foot {
+  margin-top: 3px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.acc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+/* 收益行：顶上一条线把它与「金额区」分开（原先它是表格里的两列） */
+.acc-ret {
+  margin-top: 9px;
+  padding-top: 7px;
+  border-top: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.acc-ret b,
+.snap-meta b {
+  font-weight: 800;
+}
+
+/* ---------- 账户总览头部 ---------- */
+/* 币种构成条：这是「多币种钱包」最直接的证据，所以放在总览正下方 */
+.acc-curbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.acc-curchip {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 800;
+}
+.acc-ov-meta {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---------- 排序模式（2026-10-05 补 PRD §3.2.2 的「拖拽排序」） ----------
+   三种视觉信号，缺一不可：
+     · `.sort-bar`     —— 黄底提示条，明确「现在是编辑顺序的模式」；
+     · `.dragging`     —— 被拖的那张淡出，用户才知道手上有东西；
+     · `.drop-a/.drop-b` —— 落点指示条，**分左右**（插到目标之前 / 之后）。
+   指示条用 `box-shadow` 而不是 `outline`：卡本身已有 `--sh-sm` 硬阴影，
+   box-shadow 可以两个并列叠加，outline 会把硬阴影整圈盖住。 */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding: 7px 12px;
+  background: var(--yellow);
+  border: var(--bd);
+  box-shadow: var(--sh-sm);
+  font-size: 12px;
+  font-weight: 800;
+}
+.sort-sep {
+  color: var(--muted);
+}
+/* 排序态下给整张卡「抓手」的语言：光标 + 禁用文字选择与触摸滚动。
+   `touch-action: none` 是必需的 —— 不写，手指在卡上滑动会被浏览器判成滚页面，
+   我们收不到 pointermove。 */
+.acc-pack.sorting .acc-card {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.acc-card.dragging {
+  opacity: 0.45;
+  cursor: grabbing;
+}
+.acc-card.drop-a {
+  box-shadow: -6px 0 0 var(--blue), var(--sh-sm);
+}
+.acc-card.drop-b {
+  box-shadow: 6px 0 0 var(--blue), var(--sh-sm);
+}
+/* 排序手柄：与 `.acc-card-go` 同位置、同字号（只换字符），换模式时版面不跳 */
+.acc-grip {
+  font-family: var(--mono);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+
+/* ---------- 分组（两页共用 Collapse 的头部） ---------- */
+/* `.collapse-block` 在 tokens.css 里没有规则（原型的折叠头是一条紧贴内容的带），
+   卡片包在带下面需要一点呼吸，所以在 mount.css 里补间距，不动 tokens.css。 */
+.acc-pack .collapse-block + .collapse-block {
+  margin-top: 14px;
+}
+.acc-pack .collapse-body {
+  padding-top: 12px;
+}
+.acc-pack .collapse-hd,
+.snap-pack .collapse-hd {
+  border: var(--bd);
+}
+
+/* ---------- 快照卡内部 ---------- */
+.snap-date {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+.snap-note {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 卡底部的「情报行」：总资产 / 总负债 / 明细 / 收益 —— 原表格里的四列 */
+.snap-meta {
+  margin-top: 9px;
+  padding-top: 7px;
+  border-top: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.snap-meta .up {
+  color: var(--red);
+}
+
+/* ---------- 时间筛选条 ---------- */
+.snap-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.snap-hit {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+/* 日期输入沿用 `.inp`，只是宽度收窄；只读档位下整组不出现 */
+.snap-filter .inp.dt {
+  width: 148px;
+  padding: 5px 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* ---------- 表格内的窄 select：箭头纵向居中 ---------- */
+/* 设置页表格里的 select 用 inline padding:4px 8px 压矮了高度（~28px），
+   而 tokens.css 里 select.inp 的箭头 background-position 纵向写死 17px
+   （按默认高度 ~38px 设计）—— 矮框里箭头会沉到贴住下边框。
+   这里只覆盖纵向位置为 50%（随高度自适应居中），横向不变。
+   ⚠ tokens.css 是冻结文件（npm run check:tokens 守），适配一律写这里。 */
+table.tbl select.inp {
+  background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+}
