@@ -30,7 +30,11 @@ export interface DownloadedFile {
 
 export interface DataSource {
   readonly kind: DataSourceKind;
-  /** 为 false 时（fixture 源）UI 必须把写操作置灰，而不是等它抛错 */
+  /**
+   * 为 false 时（fixture 源）UI 必须**拦下**写操作 —— 拦法是「点了给一条提示、
+   * 请求根本不发出」，**不是把按钮置灰**（控件外观一字不改；理由见
+   * `features/inventory/InventoryPage.tsx` 头部注释）。别等它抛错兜底。
+   */
   readonly writable: boolean;
   /** path 形如 `/snapshots/snap-6` 或 `/reports/trend?metric=net_worth&mode=origin` */
   get<T>(path: string): Promise<T>;
@@ -58,7 +62,7 @@ export class DataSourceError extends Error {
   }
 }
 
-/** 离线 fixture 是只读快照；写操作走到这里说明 UI 漏了置灰 */
+/** 离线 fixture 是只读快照；写操作走到这里说明 UI 漏了拦截（拦法=提示+不发请求，不是置灰） */
 export class ReadOnlySourceError extends DataSourceError {
   constructor(path: string) {
     super(

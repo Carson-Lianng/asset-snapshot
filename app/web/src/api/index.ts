@@ -19,7 +19,11 @@ export function dataSource(): DataSource {
   return active;
 }
 
-/** 当前源是否可写（fixture 为只读）—— UI 用它置灰，而不是等调用抛错 */
+/**
+ * 当前源是否可写（fixture 为只读）—— UI 用它**拦下**写操作，而不是等调用抛错。
+ * ⚠ 「拦下」= 点了给一条提示、请求不发出，**不是置灰按钮**（见 `source.ts` 的
+ * `DataSource.writable`）。对外文案只能说「不会保存」。
+ */
 export function writable(): boolean {
   return active?.writable ?? false;
 }

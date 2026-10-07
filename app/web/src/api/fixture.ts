@@ -75,8 +75,9 @@ export async function createFixtureSource(url = './fixture.json'): Promise<Fixtu
     },
     /**
      * 离线快照是**只读**的：它是一次导出的静态 DTO，写回去没有意义。
-     * 走到这里说明 UI 漏了按 `writable` 置灰 —— 抛出明确错误而不是静默假成功，
-     * 否则「点了保存但什么也没发生」会被误判成通过。
+     * 走到这里说明 UI 漏了按 `writable` 拦下 —— 拦法是「给一条提示 + 不发请求」，
+     * **不是把按钮置灰**（见 `source.ts` 的 `DataSource.writable`）。
+     * 这里抛出明确错误而不是静默假成功，否则「点了保存但什么也没发生」会被误判成通过。
      */
     async send<T>(): Promise<T> {
       throw new ReadOnlySourceError('<fixture>');
