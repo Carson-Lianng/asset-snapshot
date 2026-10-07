@@ -28,6 +28,10 @@ node_modules/
 app/web/dist/
 app/web/vite.config.ts.timestamp-*.mjs
 
+# 官网的演示产物：`site/tools/shots.mjs` 与 Pages 流水线都会在这里落一份
+# app/web/dist 的拷贝。它由一条命令原样重生（判据同 app/web/dist）。
+site/demo/
+
 # ── 临时产物与系统杂物 ───────────────────────────────────────────
 .tmp/
 *.log

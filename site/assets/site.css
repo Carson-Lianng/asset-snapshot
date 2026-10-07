@@ -1,0 +1,460 @@
+/* ══════════════════════════════════════════════════════════════════
+   家底快照 · 官网（推广页）
+   ══════════════════════════════════════════════════════════════════
+
+   ## 与 tokens.css 的关系（PRD §5.1）
+
+   下面**第一个 `:root{}` 块是逐字节照抄** `app/web/src/styles/tokens.css` 的
+   `:root{}`（第 4–24 行）。官网只继承「色板 + 字体栈 + 圆角」，
+   **不改 tokens.css 一个字**（它被 `npm run check:tokens` 与原型守着）。
+
+   ⇒ 尺度值（边框 / 阴影 / 字号）**另起一个 `:root{}` 块**，全部用 `-s` 后缀。
+     两件事分开写，是为了让「令牌块是否同源」可以被一条断言直接比对
+     （取两文件的**第一个** `:root{}` 块逐字节比较即可）。
+
+   ## 为什么官网要重定尺度
+
+   应用是**数据密集界面**（14px 正文、3px 边框、5px 阴影）；
+   官网是**阅读/营销场景**（17px 正文、4px 边框、6px 阴影）。
+   同一套色板在两种尺度下的观感完全不同 —— 大字号配细边框会显得软。
+   圆角**保持 0 不重定**：那是新粗野主义的身份特征，与尺度无关。
+   ══════════════════════════════════════════════════════════════════ */
+
+:root{
+  --ink:#0A0A0A;
+  --paper:#FDF8EE;
+  --paper-2:#FFFFFF;
+  --paper-3:#F4EFE3;
+  --yellow:#FFE500;
+  --blue:#7CC6FF;
+  --pink:#FF9BD2;
+  --green:#9BE9A8;
+  --orange:#FFB067;
+  --red:#FF5A5F;
+  --purple:#C4A1FF;
+  --muted:#6B6459;
+  --bd:3px solid var(--ink);
+  --sh:5px 5px 0 var(--ink);
+  --sh-sm:3px 3px 0 var(--ink);
+  --sh-lg:8px 8px 0 var(--ink);
+  --r:0px;
+  --font:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+
+/* ── 官网尺度（**只在这里**定义，别处不许写字面量）─────────────── */
+:root{
+  --bd-s:4px solid var(--ink);
+  --sh-s:6px 6px 0 var(--ink);
+  --sh-s-sm:4px 4px 0 var(--ink);
+  --sh-s-lg:8px 8px 0 var(--ink);
+  --maxw:1180px;
+  --pad:24px;
+  --hero-y:88px;
+  --tb-h:72px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background-color:var(--paper);
+  background-image:radial-gradient(rgba(10,10,10,.13) 1px,transparent 1px);
+  background-size:20px 20px;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:inherit}
+code{font-family:var(--mono);font-size:.92em;background:rgba(10,10,10,.07);padding:1px 5px}
+::selection{background:var(--yellow);color:var(--ink)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--paper-3)}
+::-webkit-scrollbar-thumb{background:var(--ink);border:2px solid var(--paper-3)}
+
+/* 键盘可达（PRD §9.1）：墨色 3px 外框，与新粗野主义一致 */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
+  outline:3px solid var(--ink);outline-offset:3px;
+}
+/* 深底上的 focus 要换成黄色，否则黑框看不见 */
+.oss a:focus-visible,footer a:focus-visible,.aibar a:focus-visible{outline-color:var(--yellow)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ── 版心 ───────────────────────────────────────────────────────── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);width:100%}
+.sec{padding:var(--hero-y) 0;border-bottom:4px solid var(--ink)}
+section[id]{scroll-margin-top:calc(var(--tb-h) + 8px)}
+
+/* ── 按钮 ───────────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:var(--bd-s);background:var(--paper-2);box-shadow:var(--sh-s);
+  padding:12px 22px;font-weight:900;font-size:16px;line-height:1.2;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:transform .06s,box-shadow .06s,background .06s;
+}
+.btn:hover{background:var(--paper-3)}
+.btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.btn.pri{background:var(--yellow)}
+.btn.pri:hover{background:#FFEC3D}
+.btn.ink{background:var(--ink);color:var(--paper)}
+.btn.ink:hover{background:#262626}
+.btn.sm{padding:8px 15px;font-size:13.5px;box-shadow:var(--sh-s-sm)}
+.btn.sm:active{transform:translate(4px,4px)}
+.btn.lg{padding:16px 30px;font-size:19px}
+.btn-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+/* 首屏与截图区末尾那两颗主 CTA 带一个箭头。
+   ⚠ 箭头写在 ::after 里、**不写进链接文字** —— 「在线试用 · 只读演示」在全页
+     出现 4 次必须**逐字一致**（PRD §2.2⑤），箭头只是可点性的暗示，不是措辞。 */
+.hero .btn.pri::after,.shots-cta .btn.pri::after{content:" →"}
+
+.linkish{text-decoration:underline;text-underline-offset:2px;font-weight:800}
+.linkish:hover{background:var(--yellow)}
+
+/* ── kicker 标签（海报全篇的语汇）───────────────────────────────── */
+.kicker{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--yellow);border:var(--bd-s);box-shadow:var(--sh-s);
+  padding:6px 18px;font-weight:900;font-size:clamp(14px,1.35vw,18px);
+  letter-spacing:-.01em;line-height:1.35;
+}
+.kicker i{
+  font-style:normal;font-family:var(--mono);font-size:.8em;font-weight:700;
+  background:var(--ink);color:var(--yellow);padding:2px 7px;
+}
+
+.h2{
+  font-size:clamp(30px,4.2vw,54px);font-weight:900;letter-spacing:-.02em;
+  line-height:1.12;margin-top:24px;
+}
+.lede{margin-top:18px;font-size:clamp(16px,1.5vw,19px);font-weight:600;color:var(--muted);max-width:60ch}
+
+/* ══════════════════════════════════════════════════════════════════
+   顶栏（粘性）
+   ══════════════════════════════════════════════════════════════════ */
+.tb{
+  position:sticky;top:0;z-index:50;background:var(--paper-2);
+  border-bottom:4px solid var(--ink);
+}
+.tb-in{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);height:calc(var(--tb-h) - 4px);
+  display:flex;align-items:center;gap:22px;
+}
+.tb-brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
+.tb-brand svg{display:block;width:34px;height:34px}
+.tb-txt b{display:block;font-size:18px;font-weight:900;letter-spacing:-.02em;line-height:1.15}
+.tb-txt i{display:block;font-style:normal;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--muted)}
+.tb-nav{display:flex;gap:4px;margin-left:8px}
+.tb-nav a{
+  text-decoration:none;font-weight:800;font-size:14px;padding:7px 11px;
+  border:2px solid transparent;transition:background .08s,border-color .08s;
+}
+.tb-nav a:hover{background:var(--paper-3);border-color:var(--ink)}
+.tb-nav a.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tb-acts{margin-left:auto;display:flex;gap:12px;align-items:center;flex:0 0 auto}
+
+/* ══════════════════════════════════════════════════════════════════
+   ① 首屏（黄底）
+   ══════════════════════════════════════════════════════════════════ */
+.hero{background:var(--yellow);border-bottom:4px solid var(--ink);overflow:hidden}
+.hero-in{
+  max-width:var(--maxw);margin:0 auto;padding:60px var(--pad) 72px;
+  display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center;
+}
+.hero .kicker{background:var(--ink);color:var(--yellow);box-shadow:6px 6px 0 rgba(10,10,10,.22)}
+.hero .kicker i{background:var(--yellow);color:var(--ink)}
+.hero h1{
+  /* 海报 P1 是 150px / 1080 宽；这里换算到 1180 容器 ≈ 108px 封顶（PRD §5.1） */
+  font-size:clamp(44px,8.5vw,108px);font-weight:900;letter-spacing:-.03em;
+  line-height:1.05;margin-top:26px;
+}
+.hero-sub{margin-top:26px;font-size:clamp(17px,1.6vw,21px);font-weight:500;line-height:1.7}
+.hero-sub b{font-weight:900}
+.hero-sub i{display:block;font-style:normal}
+.hero .cta-row{margin-top:34px}
+/* 「事实栏」不是「卖点栏」—— 等宽 + 硬上边，与按钮视觉区隔开 */
+.factbar{
+  margin-top:32px;border-top:3px solid var(--ink);padding-top:14px;
+  font-family:var(--mono);font-size:clamp(12px,1.15vw,14px);font-weight:700;letter-spacing:.02em;
+}
+
+/* 散落卡片（海报 P1 的九宫格放大，纯 CSS，无图片） */
+.scatter{position:relative;width:100%;max-width:420px;aspect-ratio:1/1;margin-left:auto}
+.scatter i{
+  position:absolute;border:var(--bd-s);box-shadow:var(--sh-s);
+  transform:rotate(var(--r,0deg));
+}
+/* 卡面两条「字」——让它读起来像一张卡，而不是一个色块 */
+.scatter i::before{
+  content:"";position:absolute;left:14%;width:44%;top:15%;height:9%;
+  background:var(--ink);opacity:.32;
+}
+.scatter i::after{
+  content:"";position:absolute;left:14%;right:14%;bottom:16%;height:9%;
+  background:var(--ink);opacity:.85;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ② 它是什么 / 不是什么（黄 + 墨 双色对照）
+   ══════════════════════════════════════════════════════════════════ */
+.what{padding:0}
+.what .yes{background:var(--yellow);padding:76px 0;border-bottom:4px solid var(--ink)}
+.what .no{background:var(--ink);color:var(--yellow);padding:76px 0}
+.what .lbl{font-size:clamp(34px,5vw,66px);font-weight:900;letter-spacing:-.02em;line-height:1.1;margin-top:24px}
+.what ul{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:34px}
+.what li{display:flex;gap:20px;align-items:flex-start}
+.what li i{
+  flex:0 0 44px;height:44px;border:var(--bd-s);display:grid;place-items:center;
+  font-style:normal;font-weight:900;font-size:22px;margin-top:3px;
+}
+.what .yes li i{background:var(--ink);color:var(--yellow)}
+.what .no li i{border-color:var(--yellow);color:var(--yellow)}
+.what li p{font-size:clamp(19px,2.15vw,28px);font-weight:700;line-height:1.45}
+.what .yes li em{font-style:normal;background:var(--ink);color:var(--yellow);padding:0 8px}
+.what .no li em{font-style:normal;background:var(--yellow);color:var(--ink);padding:0 8px}
+/* 「六不」宣言 —— 与页脚首尾呼应（PRD §2.2①） */
+.six{
+  margin-top:36px;border-top:4px solid var(--yellow);padding-top:20px;
+  font-family:var(--mono);font-size:clamp(13px,1.5vw,17px);font-weight:700;letter-spacing:.05em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ③ 它能回答的五个问题（截图区）
+   ══════════════════════════════════════════════════════════════════ */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.shot{
+  background:var(--paper-2);border:var(--bd-s);box-shadow:var(--sh-s);
+  padding:22px 22px 18px;display:flex;flex-direction:column;
+}
+.shot.wide{grid-column:1/-1}
+.shot-q{display:flex;gap:12px;align-items:flex-start}
+.shot-q .n{
+  flex:0 0 30px;height:30px;display:grid;place-items:center;
+  background:var(--ink);color:var(--yellow);font-family:var(--mono);font-weight:700;font-size:14px;
+}
+.shot-q h3{font-size:clamp(18px,1.9vw,25px);font-weight:900;letter-spacing:-.015em;line-height:1.32}
+.shot-a{margin-top:10px;font-size:15.5px;font-weight:700;color:var(--muted)}
+.shot figure{margin-top:18px;border:3px solid var(--ink);overflow:hidden;background:var(--paper-3)}
+.shot img{display:block;width:100%;height:auto}
+.shot-src{margin-top:10px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--muted)}
+.shots-cta{margin-top:40px;display:flex;justify-content:center}
+
+/* ══════════════════════════════════════════════════════════════════
+   ④ 三条命令跑起来
+   ══════════════════════════════════════════════════════════════════ */
+.run{background:var(--paper)}
+.run-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;margin-top:34px}
+.preline{font-size:16px;font-weight:700}
+.code{
+  background:var(--ink);color:var(--paper);border:var(--bd-s);box-shadow:var(--sh-s);
+  padding:20px 22px;margin-top:14px;overflow-x:auto;
+  font-family:var(--mono);font-size:14px;line-height:2;white-space:pre;
+}
+.code em{font-style:normal;color:var(--yellow)}
+.code .cm{color:#9E8F00}
+.facts{list-style:none;display:flex;flex-direction:column;gap:14px}
+.facts li{
+  display:flex;gap:12px;align-items:flex-start;
+  background:var(--paper-2);border:3px solid var(--ink);box-shadow:var(--sh-s-sm);
+  padding:13px 16px;font-weight:700;font-size:15.5px;line-height:1.55;
+}
+.facts li span{
+  flex:0 0 24px;height:24px;background:var(--yellow);border:2px solid var(--ink);
+  display:grid;place-items:center;font-size:14px;font-weight:900;
+}
+.run .btn-row{margin-top:24px}
+
+/* ══════════════════════════════════════════════════════════════════
+   ⑤ 配套技能（对话气泡，复用海报 P5/P6 版式）
+   ══════════════════════════════════════════════════════════════════ */
+.skill{background:var(--paper-3)}
+.chat{display:flex;flex-direction:column;gap:20px;margin-top:36px;max-width:880px}
+.bub{display:flex;justify-content:flex-end}
+.bub .t{
+  background:var(--paper-2);border:var(--bd-s);box-shadow:var(--sh-s);
+  padding:14px 20px;font-weight:700;font-size:16.5px;line-height:1.55;max-width:540px;
+}
+.bub .att{display:block;margin-top:9px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--muted)}
+.aibox{background:var(--paper-2);border:var(--bd-s);box-shadow:var(--sh-s);max-width:660px}
+.aibar{display:flex;align-items:center;gap:10px;background:var(--ink);padding:8px 15px}
+.aibar .av{flex:0 0 28px;line-height:0}
+.aibar svg{display:block;width:28px;height:28px}
+.aibar .nm{font-weight:900;color:var(--yellow);font-size:15px;letter-spacing:-.01em}
+.aibar .rt{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:700;color:#9E8F00}
+.aibody{padding:14px 18px 16px}
+.aibody .msg{font-weight:700;font-size:16px;line-height:1.6}
+.aibody .fn{margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.7}
+.plan-hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:3px solid var(--ink);padding-bottom:8px;margin-top:16px}
+.plan-hd b{font-weight:900;font-size:16px}
+.plan-hd span{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--muted)}
+.plan-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:2px solid var(--paper-3);font-weight:700;font-size:15px}
+.plan-row .cur{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:8px}
+.plan-row .amt{font-family:var(--mono);font-weight:800;white-space:nowrap}
+.plan-row.neg .amt{color:var(--red)}
+.risk{display:flex;align-items:center;gap:22px;margin-top:18px}
+.risk .num{font-family:var(--mono);font-size:clamp(38px,4.6vw,58px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.risk .num em{font-style:normal;font-size:.5em;margin-left:2px}
+.risk .col{flex:1;min-width:0}
+.stack{display:flex;height:30px;border:4px solid var(--ink)}
+.stack i{display:block;height:100%}
+.stack i:first-child{border-right:3px solid var(--ink)}
+.lg{display:flex;gap:18px;flex-wrap:wrap;margin-top:9px;font-size:14px;font-weight:700}
+.lg span{display:inline-flex;align-items:center;gap:7px}
+.lg b{width:15px;height:15px;border:3px solid var(--ink);display:inline-block}
+.diag{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;border-top:3px solid var(--ink);padding-top:16px}
+.diag b{background:var(--yellow);border:3px solid var(--ink);padding:2px 11px;font-weight:900;font-size:15px;line-height:1.4}
+.diag span{font-weight:700;font-size:15px;color:var(--muted)}
+.boundary{
+  margin-top:30px;background:var(--ink);color:var(--yellow);
+  border:var(--bd-s);box-shadow:6px 6px 0 rgba(10,10,10,.25);
+  padding:16px 22px;font-weight:800;font-size:17px;line-height:1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ⑥ 适合谁（勾选卡，复用海报 P3）
+   ══════════════════════════════════════════════════════════════════ */
+.who{background:var(--paper)}
+.checks{display:flex;flex-direction:column;gap:20px;margin-top:36px}
+.chk{
+  display:flex;align-items:center;gap:22px;
+  background:var(--paper-2);border:var(--bd-s);box-shadow:var(--sh-s);padding:22px 26px;
+}
+.chk i{
+  flex:0 0 48px;height:48px;background:var(--yellow);border:var(--bd-s);
+  display:grid;place-items:center;font-style:normal;font-weight:900;font-size:26px;
+}
+.chk p{font-size:clamp(17px,1.95vw,23px);font-weight:700;line-height:1.45}
+.who-foot{margin-top:30px;font-size:clamp(17px,1.8vw,21px);font-weight:600;color:var(--muted)}
+.who-foot b{color:var(--ink);font-weight:900}
+
+/* ══════════════════════════════════════════════════════════════════
+   ⑦ 开源与自持（墨底）
+   ══════════════════════════════════════════════════════════════════ */
+.oss{background:var(--ink);color:var(--paper)}
+.oss .h2{color:var(--paper)}
+.oss .lede{color:rgba(253,248,238,.7)}
+.oss .kicker i{background:var(--ink);color:var(--yellow)}
+/* ★ Star 徽章：shields.io 的静态 SVG。**本站唯一的外部请求**（页脚已声明）。
+   用 SVG ⇒ 放大到 36px 依然锐利，所以这里直接按视觉重量放大，不另外出图。
+   在墨底上墨色边框看不见 ⇒ 换成黄色边框 + 黄色半透明硬阴影。 */
+.starbadge{
+  display:inline-block;line-height:0;
+  border:var(--bd-s);border-color:var(--yellow);
+  box-shadow:6px 6px 0 rgba(255,229,0,.32);
+}
+.starbadge img{display:block;height:36px;width:auto}
+.tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.tech span{
+  border:3px solid var(--yellow);color:var(--yellow);padding:5px 12px;
+  font-family:var(--mono);font-size:12.5px;font-weight:700;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ⑧ 常见问题
+   ══════════════════════════════════════════════════════════════════ */
+.faq-wrap{display:flex;flex-direction:column;gap:16px;margin-top:36px;max-width:920px}
+details.fq{background:var(--paper-2);border:var(--bd-s);box-shadow:var(--sh-s)}
+details.fq summary{
+  list-style:none;cursor:pointer;padding:17px 22px;
+  font-weight:900;font-size:clamp(16px,1.75vw,20px);line-height:1.4;
+  display:flex;gap:14px;align-items:center;
+}
+details.fq summary::-webkit-details-marker{display:none}
+details.fq summary::before{
+  content:"+";flex:0 0 26px;height:26px;background:var(--yellow);border:3px solid var(--ink);
+  display:grid;place-items:center;font-family:var(--mono);font-size:16px;font-weight:900;
+}
+details.fq[open] summary::before{content:"–"}
+details.fq .bd{padding:0 22px 20px 62px;font-size:16.5px;line-height:1.75}
+details.fq .bd b{font-weight:900;background:var(--yellow);padding:0 3px}
+details.fq .bd code{background:rgba(10,10,10,.08)}
+
+/* ══════════════════════════════════════════════════════════════════
+   页脚
+   ══════════════════════════════════════════════════════════════════ */
+footer{background:var(--ink);color:var(--paper);padding:60px 0 44px}
+.foot-brand{font-size:22px;font-weight:900;letter-spacing:-.02em}
+.foot-ver{margin-top:8px;font-family:var(--mono);font-size:13px;font-weight:700;color:rgba(253,248,238,.62)}
+.foot-six{
+  margin-top:24px;font-family:var(--mono);font-size:clamp(12.5px,1.35vw,15px);
+  font-weight:700;letter-spacing:.03em;color:var(--yellow);line-height:2;
+}
+.foot-links{display:flex;gap:14px 24px;flex-wrap:wrap;margin-top:26px}
+.foot-links a{font-weight:800;font-size:15px;text-decoration:underline;text-underline-offset:3px}
+.foot-links a:hover{background:var(--yellow);color:var(--ink)}
+.foot-note{
+  margin-top:28px;border-top:3px solid rgba(253,248,238,.22);padding-top:18px;
+  font-size:13.5px;line-height:1.9;color:rgba(253,248,238,.7);max-width:70ch;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   在线试用壳页 /try/（PRD §6.3 方案 A）
+   ══════════════════════════════════════════════════════════════════ */
+body.try-page{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.try-page .tb-in{height:calc(var(--tb-h) - 4px)}
+.try-bar{
+  background:var(--yellow);border-bottom:4px solid var(--ink);
+  padding:12px var(--pad);display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.try-bar .tag{
+  flex:0 0 auto;background:var(--ink);color:var(--yellow);
+  font-family:var(--mono);font-size:12.5px;font-weight:700;padding:3px 10px;
+}
+.try-bar p{font-size:14.5px;font-weight:700;line-height:1.5;flex:1;min-width:260px}
+.try-frame{flex:1;min-height:0;background:var(--paper-3)}
+.try-frame iframe{display:block;width:100%;height:100%;border:0}
+.try-hint{
+  border-top:3px solid var(--ink);background:var(--paper-2);
+  padding:9px var(--pad);font-family:var(--mono);font-size:12px;font-weight:700;color:var(--muted);
+}
+.try-hint a{text-decoration:underline;text-underline-offset:2px}
+.try-fallback{
+  max-width:640px;margin:8vh auto;padding:26px 30px;background:var(--paper-2);
+  border:var(--bd-s);box-shadow:var(--sh-s);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   响应式（PRD §5.3：1080 / 860 / 640）
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width:1080px){
+  .shots{grid-template-columns:1fr 1fr}
+  .run-grid{grid-template-columns:1fr}
+  .hero-in{grid-template-columns:1fr;gap:32px;padding-top:48px}
+  .scatter{max-width:340px;margin:0 auto}
+}
+@media (max-width:980px){
+  /* 锚点收起，只留两颗按钮 —— 转化路径不能藏（PRD §3.3） */
+  .tb-nav{display:none}
+}
+@media (max-width:860px){
+  :root{--hero-y:60px}
+  .shots{grid-template-columns:1fr}
+  body{font-size:16px}
+  .chk{gap:16px;padding:18px 20px}
+  .chk i{flex:0 0 40px;height:40px;font-size:22px}
+  .what li p{font-size:19px}
+  body.try-page{height:auto;overflow:auto}
+  .try-frame{height:78vh}
+}
+@media (max-width:640px){
+  /* 边框/阴影降档；圆角保持 0 */
+  :root{--bd-s:3px solid var(--ink);--sh-s:4px 4px 0 var(--ink);--sh-s-sm:3px 3px 0 var(--ink)}
+  :root{--pad:16px}
+  .btn{padding:11px 18px;font-size:15px}
+  .btn.lg{padding:14px 22px;font-size:17px}
+  .tb-in{gap:12px}
+  .tb-txt i{display:none}
+  .tb-acts{gap:8px}
+  .tb-acts .btn{padding:9px 12px;font-size:13px;box-shadow:var(--sh-s-sm)}
+  .tb-acts .btn:active{transform:translate(3px,3px)}
+  .shot{padding:16px 16px 14px}
+  .code{font-size:12.5px;padding:16px}
+  details.fq .bd{padding-left:22px}
+}

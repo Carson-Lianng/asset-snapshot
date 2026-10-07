@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>家底快照 · 记录你的净值轨迹</title>
+<meta name="description" content="本机运行的资产盘点工具：不上云、不注册，一条命令看清总资产、总负债与净资产，攒几期就能看净值轨迹。MIT 开源。">
+<meta name="keywords" content="净资产,有多少钱,资产盘点,本地记账,不上云,开源记账 App">
+<meta name="theme-color" content="#FFE500">
+<link rel="canonical" href="https://carson-lianng.github.io/asset-snapshot/">
+<link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg">
+<link rel="stylesheet" href="./assets/site.css">
+<!-- 分享卡片（PRD §5.5）。og:image 必须是**绝对地址**，这是 OG 协议的硬要求。 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="家底快照">
+<meta property="og:title" content="你有多少家底？—— 家底快照">
+<meta property="og:description" content="8 张卡 · 3 个券商 · 2 个境外账户。不是你记性差，是它们本来就散着。本机运行的资产盘点工具，不上云、不注册，MIT 开源。">
+<meta property="og:url" content="https://carson-lianng.github.io/asset-snapshot/">
+<meta property="og:image" content="https://carson-lianng.github.io/asset-snapshot/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="你有多少家底？—— 家底快照">
+<meta name="twitter:description" content="本机运行 · 数据不出门 · MIT 开源。一条命令看清总资产、总负债与净资产。">
+<meta name="twitter:image" content="https://carson-lianng.github.io/asset-snapshot/assets/og.png">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     ⚠ 仓库地址与站点地址在本文件里是**写死的字面量**，散在两组地方：
+
+       A. github.com/Carson-Lianng/asset-snapshot —— 7 个 href
+          ① 顶栏「★ GitHub」   ② 首屏「★ GitHub」   ③ 怎么跑一节「★ GitHub」
+          ④ 开源区块的 Star 徽章（<a>）   ⑤ 开源区块「查看源码」
+          ⑥ 页脚「GitHub 源码」   ⑦ 页脚「MIT LICENSE」（/blob/main/LICENSE）
+          ＋ 另有 1 处：Star 徽章的 img src（shields.io 的路径里带仓库名）
+          ＋ 另有 1 处：JSON-LD 的 codeRepository
+          ＋ 另有 1 处：注释掉的「下载预构建包」（发 Release 后再启用，见开源区块）
+
+       B. carson-lianng.github.io/asset-snapshot —— 5 处**绝对地址**
+          canonical · og:url · og:image · twitter:image · JSON-LD url
+          （OG 协议要求绝对地址，所以它们没法写成相对路径；换域名时必须同批改。）
+
+     静态 HTML 无法共享常量 —— 这是「零构建」的代价。PRD §7.1 的原意是
+     不要**手抄到别处**，不是「必须有一个变量」。仓库改名或换域名时：
+
+         grep -rn 'Carson-Lianng/asset-snapshot\|carson-lianng.github.io' site/*.html site/*/*.html
+
+     ════════════════════════════════════════════════════════════════ -->
+
+<!-- ── 顶栏（粘性）。锚点 5 个 + 动作 2 个，不再多（PRD §3.3）────── -->
+<header class="tb">
+  <div class="tb-in">
+    <a class="tb-brand" href="#top">
+      <img src="./assets/logo-mark.svg" width="34" height="34" alt="家底快照">
+      <span class="tb-txt"><b>家底快照</b><i>记录你的净值轨迹</i></span>
+    </a>
+    <nav class="tb-nav" aria-label="页面导航">
+      <a href="#what">它是什么</a>
+      <a href="#shots">界面</a>
+      <a href="#run">怎么跑</a>
+      <a href="#skill">配套技能</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="tb-acts">
+      <a class="btn pri sm" href="./try/index.html">在线试用 · 只读演示</a>
+      <a class="btn ink sm" href="https://github.com/Carson-Lianng/asset-snapshot">★ GitHub</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── ① 首屏。第一眼是访客自己的处境，不是产品名（PRD §2.2②）────── -->
+<section class="hero" id="top">
+  <div class="hero-in">
+    <div>
+      <span class="kicker"><i>00</i>本机运行 · 数据不出门 · MIT 开源</span>
+      <!-- 断行是刻意的：第二行只留「家底？」两个字，品牌词独占一行压成墨色块面。
+           不要为了「排版匀称」改成 `你有 / 多少家底？`（PRD §4.2） -->
+      <h1>你有多少<br>家底？</h1>
+      <p class="hero-sub">
+        <i>8 张卡 · 3 个券商 · 2 个境外账户。</i>
+        <b>不是你记性差，是它们本来就散着。</b>
+      </p>
+      <div class="btn-row cta-row">
+        <a class="btn pri lg" href="./try/index.html">在线试用 · 只读演示</a>
+        <a class="btn ink lg" href="https://github.com/Carson-Lianng/asset-snapshot">★ GitHub</a>
+      </div>
+      <p class="factbar">零注册 · 零上传 · 无账号体系 · 一条命令起在本机</p>
+    </div>
+    <!-- 散落卡片：海报 P1 的九宫格放大（纯 CSS，无图片）—— 首屏要的是情绪，不是界面 -->
+    <div class="scatter" aria-hidden="true">
+      <i style="left:0%;top:4%;width:26%;height:26%;background:var(--blue);--r:-6deg"></i>
+      <i style="left:33%;top:0%;width:28%;height:28%;background:var(--orange);--r:8deg"></i>
+      <i style="left:70%;top:6%;width:26%;height:26%;background:var(--blue);--r:-8deg"></i>
+      <i style="left:4%;top:34%;width:30%;height:30%;background:var(--pink);--r:5deg"></i>
+      <i style="left:36%;top:33%;width:30%;height:30%;background:var(--green);--r:-3deg"></i>
+      <i style="left:72%;top:35%;width:26%;height:26%;background:var(--pink);--r:6deg"></i>
+      <i style="left:0%;top:68%;width:26%;height:26%;background:var(--purple);--r:-5deg"></i>
+      <i style="left:33%;top:66%;width:28%;height:28%;background:var(--red);--r:3deg"></i>
+      <i style="left:70%;top:68%;width:28%;height:28%;background:var(--green);--r:-4deg"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ── ② 它是什么 / 不是什么。全页最高价值的一屏，必须在第二位 ────── -->
+<section class="sec what" id="what">
+  <div class="yes">
+    <div class="wrap">
+      <span class="kicker"><i>01</i>它是什么 / 不是什么</span>
+      <h2 class="lbl">它是</h2>
+      <ul>
+        <li><i>✓</i><p>手动盘一次所有账户的余额</p></li>
+        <li><i>✓</i><p>冻结成一张 <em>只读</em> 的快照</p></li>
+        <li><i>✓</i><p>攒几期，净值涨跌一目了然</p></li>
+      </ul>
+    </div>
+  </div>
+  <div class="no">
+    <div class="wrap">
+      <h2 class="lbl">它不是</h2>
+      <ul>
+        <li><i>✕</i><p>不是记账 App —— 不记流水，只盘点</p></li>
+        <li><i>✕</i><p>不自动同步、不连行情 —— 数字亲手填</p></li>
+        <li><i>✕</i><p>不上云、不注册 —— 只在这台电脑上</p></li>
+      </ul>
+      <!-- 「反 App 宣言」六条。与页脚首尾呼应（PRD §2.2①） -->
+      <p class="six">不上云 · 不注册 · 不记流水 · 不连行情 · 不自动同步 · 不埋点</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ③ 它能回答的五个问题。首屏许下的承诺，在这里当场兑现 ──────── -->
+<section class="sec" id="shots">
+  <div class="wrap">
+    <span class="kicker"><i>02</i>它能回答的五个问题</span>
+    <h2 class="h2">真界面，不是效果图</h2>
+    <p class="lede">下面每张图都出自同一份只读演示数据 —— 点「在线试用」看的，就是这五个页面。</p>
+
+    <div class="shots">
+      <!-- 第 1 条刻意与首屏 H1 同问（`你有多少家底？`）：这一屏就是它被回答的样子。
+           不要为了「避免重复」换成别的问法（PRD §4.4） -->
+      <article class="shot wide">
+        <div class="shot-q"><span class="n">1</span><h3>我现在有多少家底？</h3></div>
+        <p class="shot-a">总资产、总负债、净资产，一屏给完。</p>
+        <figure>
+          <img src="./assets/shots/1-networth.webp" width="2880" height="1800" loading="lazy" decoding="async"
+               alt="首页：左侧导航，右侧顶部一张黄色大卡写着当前净资产，旁边是总资产与总负债两栏">
+        </figure>
+        <p class="shot-src">首页 · 净资产</p>
+      </article>
+
+      <article class="shot">
+        <div class="shot-q"><span class="n">2</span><h3>比上期多了多少？</h3></div>
+        <p class="shot-a">每期冻结一次，跨期直接比。</p>
+        <figure>
+          <img src="./assets/shots/2-trend.webp" width="2880" height="1800" loading="lazy" decoding="async"
+               alt="报表页：净资产折线趋势图与总资产、总负债三条序列的时间轴">
+        </figure>
+        <p class="shot-src">报表 · 趋势</p>
+      </article>
+
+      <article class="shot">
+        <div class="shot-q"><span class="n">3</span><h3>钱都压在哪个平台？</h3></div>
+        <p class="shot-a">按平台、分类、币种、标签切开看。</p>
+        <figure>
+          <img src="./assets/shots/3-platform.webp" width="2880" height="1800" loading="lazy" decoding="async"
+               alt="首页下半部：平台分布的横向堆叠条形图与币种分布饼图并排">
+        </figure>
+        <p class="shot-src">首页 · 平台分布 / 币种堆叠</p>
+      </article>
+
+      <article class="shot">
+        <div class="shot-q"><span class="n">4</span><h3>理财到底赚了没？</h3></div>
+        <p class="shot-a">记本金，算累计收益与本期收益。</p>
+        <figure>
+          <img src="./assets/shots/4-returns.webp" width="2880" height="1800" loading="lazy" decoding="async"
+               alt="快照详情页：收益面板列出总本金、总市值、累计收益与累计收益率">
+        </figure>
+        <p class="shot-src">快照详情 · 收益面板</p>
+      </article>
+
+      <article class="shot">
+        <div class="shot-q"><span class="n">5</span><h3>想学怎么用，去哪看？</h3></div>
+        <p class="shot-a">界面里自带一本使用手册。</p>
+        <figure>
+          <img src="./assets/shots/5-help.webp" width="2880" height="1800" loading="lazy" decoding="async"
+               alt="使用手册页：左侧章节目录，右侧正文，含概念、场景、常见问题与名词速查">
+        </figure>
+        <p class="shot-src">#help 页 · 9 章</p>
+      </article>
+    </div>
+
+    <div class="shots-cta">
+      <a class="btn pri lg" href="./try/index.html">在线试用 · 只读演示</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ④ 三条命令跑起来 ─────────────────────────────────────────── -->
+<section class="sec run" id="run">
+  <div class="wrap">
+    <span class="kicker"><i>03</i>三条命令跑起来</span>
+    <h2 class="h2">要一个 Node，别的都不要</h2>
+    <p class="lede">不装 App、不起后台、不连数据库。它确实需要 Node.js —— 写出来是因为假装不用反而更麻烦。</p>
+
+    <div class="run-grid">
+      <div>
+        <p class="preline">要求 Node.js ≥ 22.18 —— 终端里 <code>node -v</code> 自检；不够就去 <a class="linkish" href="https://nodejs.org">nodejs.org</a> 装 LTS 版。</p>
+        <pre class="code"><em>npm ci --omit=dev</em>   <span class="cm"># 装依赖，只一次</span>
+<em>npm start</em>          <span class="cm"># 起服务，自动开浏览器</span>
+→ http://127.0.0.1:5188/#t=&lt;你的令牌&gt;</pre>
+        <div class="btn-row">
+          <a class="btn ink" href="https://github.com/Carson-Lianng/asset-snapshot">★ GitHub</a>
+          <a class="btn" href="./try/index.html#help">先读使用手册</a>
+        </div>
+      </div>
+      <ul class="facts">
+        <li><span>✓</span>数据全在 <code>./.data/</code> —— 拷走整个目录就搬家</li>
+        <li><span>✓</span>每日自动备份，保留最近 30 份</li>
+        <li><span>✓</span>只监听 <code>127.0.0.1</code> —— 同网段的设备也访问不到</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── ⑤ 配套技能（独立交付）────────────────────────────────────── -->
+<section class="sec skill" id="skill">
+  <div class="wrap">
+    <span class="kicker"><i>04</i>配套技能</span>
+    <h2 class="h2">盘点这本账，也可以丢给 Agent</h2>
+    <p class="lede">不想一个个手填？把账单截图丢给助手，它读出来给你看，落库仍要你点头。</p>
+
+    <div class="chat">
+      <div class="bub">
+        <div class="t">
+          帮我把这份账本录一期，记 10 月 5 号
+          <span class="att">已附 · 账本截图 2 张</span>
+        </div>
+      </div>
+
+      <div class="aibox">
+        <div class="aibar">
+          <span class="av"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" role="img" aria-label="助手"><rect width="48" height="48" fill="#FFE500"/><rect x="9" y="16" width="30" height="18" fill="#0A0A0A"/><text x="24" y="25" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,Menlo,monospace" font-size="14" font-weight="700" fill="#FFE500">$</text></svg></span>
+          <span class="nm">Agent</span>
+          <span class="rt">数字全部读自你给的账本</span>
+        </div>
+        <div class="aibody">
+          <p class="msg">已分析完 4 个账户 —— 这是将写入的清单。<br>录入交给它，落库仍要你点头。</p>
+          <div class="plan-hd"><b>将写入清单</b><span>SNAPSHOT · 2026-10-05</span></div>
+          <div class="plan-row"><span>招商银行 · 活期<span class="cur">CNY</span></span><span class="amt">242,180.00</span></div>
+          <div class="plan-row"><span>华泰证券 · 股票<span class="cur">CNY</span></span><span class="amt">586,500.00</span></div>
+          <div class="plan-row"><span>支付宝 · 余额宝<span class="cur">CNY</span></span><span class="amt">483,940.00</span></div>
+          <div class="plan-row neg"><span>招行信用卡<span class="cur">负债</span></span><span class="amt">−28,020.00</span></div>
+        </div>
+      </div>
+
+      <div class="bub">
+        <div class="t">我的风险资产占比是不是过高了？</div>
+      </div>
+
+      <div class="aibox">
+        <div class="aibar">
+          <span class="av"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" role="img" aria-label="助手"><rect width="48" height="48" fill="#FFE500"/><rect x="9" y="16" width="30" height="18" fill="#0A0A0A"/><text x="24" y="25" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,Menlo,monospace" font-size="14" font-weight="700" fill="#FFE500">$</text></svg></span>
+          <span class="nm">Agent</span>
+          <span class="rt">这条是它额外算的 · 非系统口径</span>
+        </div>
+        <div class="aibody">
+          <div class="risk">
+            <div class="num">45<em>%</em></div>
+            <div class="col">
+              <div class="stack">
+                <i style="width:45%;background:var(--yellow)"></i><i style="width:55%;background:var(--blue)"></i>
+              </div>
+              <div class="lg">
+                <span><b style="background:var(--yellow)"></b>风险资产 45%</span>
+                <span><b style="background:var(--blue)"></b>稳健资产 55%</span>
+              </div>
+            </div>
+          </div>
+          <div class="diag"><b>诊断 · 偏高</b><span>风险敞口压在一个市场上</span></div>
+          <p class="fn">* 占比由助手额外算出 · 非系统口径 · 分母为总资产（不含负债）1,312,620</p>
+        </div>
+      </div>
+
+      <!-- 交付边界：必须与 pack:release 的真实产物一致，否则是假承诺（PRD §2.3） -->
+      <p class="boundary">配套技能「家底快照助手」<b>独立交付</b>，不在应用包里 —— 装法是把它拷进平台的技能目录。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ⑥ 适合谁 ─────────────────────────────────────────────────── -->
+<section class="sec who" id="who">
+  <div class="wrap">
+    <span class="kicker"><i>05</i>适合谁</span>
+    <h2 class="h2">中两条以上，它就是给你做的</h2>
+
+    <div class="checks">
+      <div class="chk"><i>✓</i><p>钱散在多张卡、券商、钱包、境外账户里</p></div>
+      <div class="chk"><i>✓</i><p>想看清「净资产」，不只是这个月花了多少</p></div>
+      <div class="chk"><i>✓</i><p>资产数据敏感，不想交给要注册的 App</p></div>
+    </div>
+
+    <p class="who-foot">期数不用多 —— <b>三个月一次，也能看出趋势。</b></p>
+  </div>
+</section>
+
+<!-- ── ⑦ 开源与自持 ─────────────────────────────────────────────── -->
+<section class="sec oss" id="opensource">
+  <div class="wrap">
+    <span class="kicker"><i>06</i>开源与自持</span>
+    <h2 class="h2">MIT 许可，源码全在 GitHub 上</h2>
+    <p class="lede">不是「开放了部分代码」—— 整份在仓库里：能查、能改、能自己留着。</p>
+
+    <div class="btn-row" style="margin-top:32px">
+      <!-- ★ Star 徽章。它是**本站唯一的外部请求**（shields.io），页脚已声明。
+           用静态 SVG 而不是 JS 调 GitHub API：不阻塞、不耗配额（PRD §7.2）。
+           ⚠ 发首次 Release 之后，把下面这段注释打开，并删掉「下载预构建包」的注释符号。 -->
+      <a class="starbadge" href="https://github.com/Carson-Lianng/asset-snapshot"><img
+        src="https://img.shields.io/github/stars/Carson-Lianng/asset-snapshot?style=for-the-badge&amp;label=STAR&amp;labelColor=0A0A0A&amp;color=FFE500"
+        width="112" height="36" loading="lazy" decoding="async"
+        alt="★ Star on GitHub —— 显示当前 Star 数"></a>
+      <a class="btn" href="https://github.com/Carson-Lianng/asset-snapshot">查看源码</a>
+      <a class="btn" href="./try/index.html#help">读使用手册</a>
+      <!-- 「下载预构建包」**刻意留空**：仓库当前还没有任何 Release，按钮点过去是空页面。
+           按 PRD §8.3-P2，未发 Release 之前摘掉按钮而不是挂一个死链接。
+           发完 v1.0.0（npm run pack:release -- --zip 的产物）后，把下面两行接上：
+      <a class="btn pri" href="https://github.com/Carson-Lianng/asset-snapshot/releases/latest">下载预构建包</a>
+      -->
+    </div>
+
+    <div class="tech">
+      <span>Node ≥ 22.18</span><span>MIT</span><span>TypeScript</span><span>React</span>
+      <span>SQLite</span><span>单端口 5188</span><span>无外部请求</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ⑧ 常见问题 ───────────────────────────────────────────────── -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <span class="kicker"><i>07</i>常见问题</span>
+    <h2 class="h2">被问得最多的五个问题</h2>
+
+    <div class="faq-wrap">
+      <details class="fq">
+        <summary>数据会不会被传走？</summary>
+        <div class="bd">不会。服务只监听本机回环地址 <code>127.0.0.1</code>，不发起任何外部请求，数据全部在 <code>./.data/</code> 里。你可以断网跑一遍 —— 它照样能用。</div>
+      </details>
+      <details class="fq">
+        <summary>那句「需要访问令牌」是什么？</summary>
+        <div class="bd">令牌是接口的准入凭证，走地址片段传递，<b>不会发给服务端、也不进日志</b>。用启动时打印的完整地址（末尾带 <code>#t=…</code>）访问即可，存成书签长期有效。</div>
+      </details>
+      <details class="fq">
+        <summary>能几个人一起用吗？</summary>
+        <div class="bd">不能，这是单机单用户设计：没有多用户与权限体系。也请不要把服务绑到 <code>0.0.0.0</code> —— 那会让同网段的设备都能访问。</div>
+      </details>
+      <details class="fq">
+        <summary>换台电脑怎么办？</summary>
+        <div class="bd">把整个 <code>.data/</code> 目录拷过去，在新机器上装好依赖就能接着用。账户、快照、汇率、备份、令牌全在里面。</div>
+      </details>
+      <details class="fq">
+        <summary>备份靠得住吗？</summary>
+        <div class="bd">挡得住误删和误操作，<b>挡不住整盘故障</b> —— 备份与主库在同一块盘上。请定期把 <code>backups/</code> 里最新的那份拷到别处。另外，收益指标有「首期」「基准缺失」两种<b>不展示数值</b>的合法状态，不是 bug，是口径。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── 页脚 ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <p class="foot-brand">家底快照 · 记录你的净值轨迹</p>
+    <p class="foot-ver">v1.0.0 · MIT License · © 2026</p>
+    <p class="foot-six">不上云 · 不注册 · 不记流水 · 不连行情 · 不自动同步 · 不埋点</p>
+    <div class="foot-links">
+      <a href="./try/index.html">在线试用 · 只读演示</a>
+      <a href="https://github.com/Carson-Lianng/asset-snapshot">GitHub 源码</a>
+      <a href="./try/index.html#help">使用手册</a>
+      <a href="https://github.com/Carson-Lianng/asset-snapshot/blob/main/LICENSE">MIT LICENSE</a>
+    </div>
+    <p class="foot-note">
+      本站不收集任何数据，也没有 Cookie 横幅。<br>
+      唯一的外部请求：GitHub 开源徽章（shields.io）。
+    </p>
+  </div>
+</footer>
+
+<script src="./assets/site.js" defer></script>
+
+<!-- 结构化数据（PRD §5.5）：让搜索引擎知道这是免费开源的桌面财务应用 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "家底快照",
+  "alternateName": "asset-snapshot",
+  "description": "本机运行的资产盘点工具：不上云、不注册，一条命令看清总资产、总负债与净资产，攒几期就能看净值轨迹。",
+  "applicationCategory": "FinanceApplication",
+  "applicationSubCategory": "PersonalFinance",
+  "operatingSystem": "macOS, Windows, Linux",
+  "softwareVersion": "1.0.0",
+  "isAccessibleForFree": true,
+  "license": "https://opensource.org/licenses/MIT",
+  "url": "https://carson-lianng.github.io/asset-snapshot/",
+  "codeRepository": "https://github.com/Carson-Lianng/asset-snapshot",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+  "inLanguage": "zh-CN"
+}
+</script>
+
+</body>
+</html>
